@@ -96,17 +96,17 @@ python app.py
 A aplicação estará disponível em http://127.0.0.1:5000/ (ou outra porta, se configurado).
 
 
-📂 Estrutura do Projeto
-your_flask_app/
-├── app.py                      # Arquivo principal do Flask, rotas e inicialização
-├── app_webService/             # Lógica de negócio e acesso a dados
-│   ├── data/
-│   │   └── conection.py        # Classe para conexão com o banco de dados
-│   └── models/
-│       ├── categories.py       # Modelo para operações com categorias
-│       └── products.py         # Modelo para operações com produtos (ajustado para JOIN com imagens)
-└── templates/
-    └── index.html              # Template HTML principal para exibição dos vinhos
+📂 Estrutura do Projeto<br>
+your_flask_app/<br>
+├── app.py                      # Arquivo principal do Flask, rotas e inicialização<br>
+├── app_webService/             # Lógica de negócio e acesso a dados<br>
+│   ├── data/<br>
+│   │   └── conection.py        # Classe para conexão com o banco de dados<br>
+│   └── models/<br>
+│       ├── categories.py       # Modelo para operações com categorias<br><br>
+│       └── products.py         # Modelo para operações com produtos (ajustado para JOIN com imagens)<br>
+└── templates/<br>
+    └── index.html              # Template HTML principal para exibição dos vinhos<br>
 
 
 ⚠️ Ponto de Atenção para Desenvolvimento
