@@ -52,12 +52,11 @@ Python
 # app_webService/data/conection.py
 
 class Conection:
-    def __init__(self):
-        self.host = "localhost"
-        self.user = "root"
-        self.password = "sua_senha_do_mysql" # <-- ATUALIZE AQUI
-        self.database = "db_vinhas_de_ouro"
-        # ...
+    def __init__(self):<br>
+        self.host = "localhost"<br>
+        self.user = "root"<br>
+        self.password = "sua_senha_do_mysql" # <-- ATUALIZE AQUI<br>
+        self.database = "db_vinhas_de_ouro"<br>
 
 
 2. Configuração do Ambiente Python
