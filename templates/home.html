@@ -46,6 +46,41 @@
     {% endblock %}
 
 
+    <main>
+        <section class="store">
+            
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                    <p class="alert alert-{{ category }}" role="alert">{{ message }}</p>
+
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+    
+            <h1 class="store__title">Nossos Vinhos</h1>
+            
+            <div class="store__grid">
+                {# Loop sobre 'produtos' (que são os vinhos), conforme passado pelo Flask #}
+                {% for vinho in produtos %}
+                        
+                        <article class="product-card">
+                            <img src="{{ vinho.imagem_url }}" alt="{{ vinho.nome }}" class="product-card__image">
+                            <h3 class="product-card__name">{{ vinho.nome }}</h3>
+                            <p class="product-card__description">{{ vinho.descricao }}</p>
+                            <p class="product-card__price">R$ {{ '%.2f'|format(vinho.preco) }}</p>
+                            <a href="{{ url_for('detalhes_vinho', vinho_id=vinho.id_produto) }}" class="product-card__details-button">Ver Detalhes</a>
+                        </article>{% else %}
+        
+                    <p class="store__error-message">Nenhum vinho encontrado.</p>
+                {% endfor %}
+        </section>
+    </main>
+    
+    <footer class="footer">   
+        <p class="footer__paragraph">&copy; 2025 Les Vignes d’Or. Todos os direitos reservados.</p>
+    </footer>
+
 
 </body>
 
