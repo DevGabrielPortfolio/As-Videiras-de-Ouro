@@ -3,11 +3,11 @@ from mysql.connector import Error
 
 class Conection:
     # Credênciais do banco de dados
-    _HOST = 'asvinhasdeouro-aluno-48a5.c.aivencloud.com'
+    _HOST = 'localhost'  #a svinhasdeouro-aluno-48a5.c.aivencloud.com
     _DATABASE = 'db_vinhas_de_ouro'
-    _USER = 'avnadmin'
-    _PASSWORD = 'AVNS_9WXfOWTT-CeO2uZltgg' 
-    _PORT = 14307
+    _USER = 'root'  # avnadmin
+    _PASSWORD = 'root'    # AVNS_9WXfOWTT-CeO2uZltgg
+    _PORT = 3306  # 14307
 
     @staticmethod
     def create_conection():
