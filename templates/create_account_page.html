@@ -21,6 +21,13 @@
     <script src="{{ url_for('static', filename='js/search-cep.js') }}" defer></script>
 </head>
 <body >
+    
+   {% extends 'base.html' %}
+
+        {% block title %}Página Inicial - Les Vignes d’Or{% endblock %}
+
+    {% block content %}
+
     <section class="register" >
         <main class="register__main-container">
             <h2 class="register__title">Crie sua Conta</h2>
