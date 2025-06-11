@@ -1,0 +1,334 @@
+/* Importação de fontes (opcional, mas adiciona estilo) */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;700&display=swap');
+
+
+/* Estilos Gerais */
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: var(--color-background-light-index);
+    color: var(--color-text-dark);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 15px;
+}
+
+a {
+    text-decoration: none;
+    color: var(--color-primary-burgundy);
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--color-secondary-gold);
+    text-decoration: underline;
+}
+
+/* Header */
+.header {
+    background-color: var(--color-primary-burgundy);
+    color: var(--color-text-light);
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+    flex-wrap: wrap; /* Permite que os itens quebrem a linha em telas menores */
+}
+
+.header__main-left,
+.header__main-right {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px; /* Espaçamento em telas pequenas */
+}
+
+.header__center {
+    flex-grow: 1; /* Permite que o centro ocupe o espaço restante */
+    text-align: center;
+    margin-bottom: 5px; /* Espaçamento em telas pequenas */
+}
+
+.header__brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2em;
+    font-weight: 700;
+    color: var(--color-text-light);
+    text-decoration: none;
+    letter-spacing: 2px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+.header__main-category-select {
+    padding: 8px 15px;
+    border-radius: 5px;
+    border: 1px solid var(--color-secondary-gold);
+    background-color: var(--color-text-light);
+    color: var(--color-text-dark);
+    font-size: 1em;
+    cursor: pointer;
+    margin-right: 20px;
+    transition: all 0.3s ease;
+}
+
+.header__main-category-select:focus {
+    outline: none;
+    border-color: var(--color-primary-burgundy);
+    box-shadow: 0 0 0 3px rgba(85, 13, 13, 0.2);
+}
+
+.header__icon-link {
+    color: var(--color-text-light);
+    font-size: 1.5em;
+    margin-left: 20px;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.header__icon-link:hover {
+    color: var(--color-secondary-gold);
+    transform: translateY(-2px);
+}
+
+/* Título da Página (para index.html) */
+.store__title {
+    font-family: 'Playfair Display', serif;
+    text-align: center;
+    color: var(--color-primary-burgundy);
+    margin: 50px 0 40px;
+    font-size: 3em;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    border-bottom: 2px solid var(--color-secondary-gold);
+    padding-bottom: 15px;
+    display: inline-block; /* Para o border-bottom ajustar ao texto */
+    width: 100%;
+}
+
+/* Carousel Styles */
+.store__carousel-container {
+    max-width: 900px; /* Adjust as needed */
+    margin: 40px auto; /* Centers the carousel horizontally with some top/bottom margin */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    overflow: hidden; /* Ensures image corners are rounded with the container */
+}
+
+.store__carousel-inner {
+    border-radius: 10px; /* Applies to the inner part, complementing the container */
+}
+
+.store__carousel-image {
+    height: 450px; /* Fixed height for consistency */
+    object-fit: cover; /* Ensures images cover the area without distortion */
+    border-radius: 10px; /* Rounded corners for the images */
+}
+
+/* Custom carousel controls for better visibility with your theme */
+.store__carousel-control--prev,
+.store__carousel-control--next {
+    width: 5%; /* Make controls a bit wider */
+    background: rgba(0, 0, 0, 0.4); /* Slightly darker background for better contrast */
+    transition: background-color 0.3s ease;
+}
+
+.store__carousel-control--prev:hover,
+.store__carousel-control--next:hover {
+    background: rgba(0, 0, 0, 0.6); /* Darker on hover */
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(288deg) brightness(102%) contrast(102%); /* Makes icons white */
+}
+
+/* Grid de Produtos */
+.store__grid {
+    display: grid;
+    /* Adapta-se para ter um card por linha em telas pequenas, e múltiplos em telas maiores */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    padding: 20px 0;
+    /* Centraliza a grade quando há poucos itens para preencher toda a largura */
+    justify-content: center;
+}
+
+.product-card {
+    background-color: #fff;
+    border: 1px solid var(--color-border-light-index);
+    border-radius: 10px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.product-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.product-card__image {
+    width: 100%;
+    height: 250px; /* Altura fixa para as imagens */
+    object-fit: cover;
+    border-bottom: 1px solid var(--color-border-light-index);
+    display: block; /* Remove espaço extra abaixo da imagem */
+}
+
+.product-card__name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6em;
+    color: var(--color-primary-burgundy);
+    margin: 18px 18px 10px;
+    flex-grow: 1;
+    text-align: center;
+}
+
+.product-card__description {
+    font-size: 0.9em;
+    color: #666;
+    margin: 0 18px 12px;
+    line-height: 1.5;
+    text-align: center;
+}
+
+.product-card__price {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.7em;
+    color: var(--color-success);
+    font-weight: 700;
+    margin: 10px 18px 20px;
+    text-align: center;
+}
+
+.product-card__details-button {
+    display: block;
+    background-color: var(--color-secondary-gold);
+    color: var(--color-text-light);
+    padding: 14px 0;
+    text-align: center;
+    border-radius: 0 0 10px 10px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: auto; /* Empurra o botão para baixo */
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.product-card__details-button:hover {
+    background-color: #a37209; /* Um dourado um pouco mais escuro no hover */
+    text-decoration: none;
+    transform: scale(1.01);
+}
+
+.store__error-message {
+    text-align: center;
+    color: #777;
+    font-style: italic;
+    grid-column: 1 / -1;
+    padding: 30px;
+    background-color: #fff3cd; /* cor de alerta do Bootstrap */
+    border: 1px solid #ffc107;
+    border-radius: 8px;
+    margin-top: 30px;
+    font-size: 1.1em;
+}
+
+/* Footer */
+footer {
+    background-color: var(--color-primary-burgundy);
+    color: var(--color-text-light);
+    text-align: center;
+    padding: 25px 0;
+    margin-top: 60px;
+    width: 100%;
+    box-shadow: 0 -3px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Media Queries para Responsividade */
+@media (max-width: 992px) {
+    .header {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 10px;
+    }
+    .header__main-left,
+    .header__main-right,
+    .header__center {
+        margin-bottom: 10px;
+        text-align: center;
+        justify-content: center; /* Centraliza itens flex */
+    }
+    .header__main-category-select {
+        width: 80%;
+        margin: 0 auto; /* Centraliza o select */
+    }
+    .header__icon-link {
+        margin: 0 15px;
+    }
+    .header__brand {
+        font-size: 1.8em;
+    }
+    .store__title {
+        font-size: 2.2em;
+        margin: 40px 0 30px;
+    }
+    .store__carousel-container {
+        max-width: 100%; /* Full width on smaller screens */
+        margin: 30px 0; /* Adjust margin */
+        border-radius: 0; /* No border-radius on full width */
+        box-shadow: none; /* No shadow on full width */
+    }
+    .store__carousel-image {
+        height: 300px; /* Smaller height for responsiveness */
+        border-radius: 0;
+    }
+    .store__grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+    }
+    .product-card__image {
+        height: 200px;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 0 10px;
+    }
+    .store__grid {
+        grid-template-columns: 1fr; /* Uma coluna em telas menores */
+    }
+    .store__title {
+        font-size: 1.8em;
+        margin: 30px 0 25px;
+    }
+    .store__carousel-image {
+        height: 250px;
+    }
+}
+
+@media (max-width: 480px) {
+    .header__brand {
+        font-size: 1.5em;
+    }
+    .header__icon-link {
+        font-size: 1.2em;
+        margin: 0 10px;
+    }
+    .product-card__name {
+        font-size: 1.4em;
+    }
+    .product-card__price {
+        font-size: 1.5em;
+    }
+    .store__carousel-image {
+        height: 200px;
+    }
+}

@@ -1,0 +1,16 @@
+:root {
+    --color-text-light: #f8f8f8;
+    --color-background-light: #f4f4f4;
+    --color-border-light: #ddd;
+
+    --color-primary-burgundy: #550d0d;
+    --color-secondary-gold: #b8860b;
+    --color-text-dark: #333;
+    --color-text-light: #f8f8f8;
+    --color-background-light-index: #f8f8f8;
+    --color-border-light-index: #eee;
+    --color-success: #28a745;
+    --color-info: #17a2b8;
+    --color-warning: #ffc107;
+    --color-danger: #dc3545;
+}
