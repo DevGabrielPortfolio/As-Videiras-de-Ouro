@@ -2,28 +2,6 @@
 
     <div class="header__store-name header__main-left">
 
-        <form action="{{ url_for('main_page') }}" method="get" id="filter-form" class="category-filter">
-
-            <select name="categoria" class="header__main-category-select" onchange="this.form.submit()">
-
-                <option value="" {% if not request.args.get('categoria') %}selected{% endif %}>Todas as Categorias
-                </option>
-
-                {% for categoria in categorias %}
-
-                <option value="{{ categoria.id_categoria }}" {% set
-                    selected_category_id=request.args.get('categoria') %} {% if selected_category_id is not none and
-                    selected_category_id is not string and selected_category_id|int==categoria.id_categoria %}
-                    selected {% elif selected_category_id is string and
-                    selected_category_id|int(default=-1)==categoria.id_categoria %} selected {% endif %}>
-                    {{ categoria['nome'] }}
-                </option>
-
-                {% endfor %}
-
-            </select><!--header__main-category-select-->
-
-        </form><!--category-filter-->
 
     </div><!--header__section header__section--left-->
 
