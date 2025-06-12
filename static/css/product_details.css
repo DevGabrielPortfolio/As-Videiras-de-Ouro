@@ -1,0 +1,363 @@
+/* Estilos para o cabeçalho (vindo de index.css ou global) */
+.header {
+    background-color: var(--color-primary-burgundy);
+    color: var(--color-text-light);
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.header__center {
+    flex-grow: 1; /* Ocupa o espaço central */
+    text-align: center;
+}
+
+.header__store-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 2em;
+    font-weight: bold;
+    color: var(--color-text-light);
+    text-decoration: none;
+    letter-spacing: 1px;
+    transition: color 0.3s ease;
+}
+
+.header__store-name:hover {
+    color: var(--color-secondary-gold);
+}
+
+.header__right {
+    display: flex;
+    gap: 20px; /* Espaço entre os links de ícone */
+}
+
+.header__icon-link { /* Alterado de .header-right .icon-link */
+    display: flex;
+    align-items: center;
+    gap: 5px; /* Espaço entre ícone e texto */
+    text-decoration: none;
+    color: inherit; /* Ou a cor do seu texto no menu */
+    padding: 5px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    color: var(--color-text-light); /* Garante que os ícones no header sejam brancos */
+}
+
+.header__icon-link:hover { /* Alterado de .header-right .icon-link */
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.header__icon-link i { /* Alterado de .header-right .icon-link i */
+    font-size: 1.5em; /* Tamanho do ícone */
+    color: var(--color-text-light); /* Exemplo: cor branca para ícones no cabeçalho */
+}
+
+/* Nota: .header-right .nav-text não foi encontrado no seu HTML para esta página, removido */
+
+
+/* Estilos para a seção principal de detalhes do vinho */
+.wine-detail { /* Alterado de .main */
+    padding: 20px;
+    background-color: var(--color-background-light);
+}
+
+
+.wine-detail__container { /* Alterado de .wine-detail-container */
+    padding: 40px;
+    background-color: #fff; /* Fundo branco para o container do produto */
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+.wine-detail__image { /* Alterado de .wine-detail-image */
+    max-width: 100%;
+    height: auto;
+    border: 1px solid var(--color-border-light);
+    border-radius: 8px; /* Borda arredondada para a imagem */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+/* Ajustes para classes Bootstrap comuns dentro do contexto de detalhes */
+.wine-detail__container .display-4 { /* Mais específico para o nome do vinho */
+    color: var(--color-primary-burgundy); /* Cor de destaque para o nome do vinho */
+    font-family: 'Playfair Display', serif;
+    font-weight: bold;
+}
+
+.wine-detail__container .lead { /* Para a descrição */
+    font-size: 1.25rem;
+    color: var(--color-text-dark);
+}
+
+.wine-detail__container .text-success { /* Para o preço */
+    color: var(--color-secondary-gold) !important; /* Usando !important para sobrescrever Bootstrap se necessário */
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.wine-detail__container .form-label {
+    font-weight: 600;
+    color: var(--color-text-dark);
+}
+
+.wine-detail__container .form-control {
+    border-color: var(--color-border-light);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.wine-detail__container .form-control:focus {
+    border-color: var(--color-primary-burgundy);
+    box-shadow: 0 0 0 0.25rem rgba(85, 13, 13, 0.25);
+}
+
+.wine-detail__container .btn-primary {
+    background-color: var(--color-primary-burgundy);
+    border-color: var(--color-primary-burgundy);
+    transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+}
+
+.wine-detail__container .btn-primary:hover {
+    background-color: #6a1a1a;
+    border-color: #6a1a1a;
+    transform: translateY(-2px);
+}
+
+.wine-detail__container .btn-secondary {
+    background-color: #6c757d;
+    border-color: #6c757d;
+    transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+}
+
+.wine-detail__container .btn-secondary:hover {
+    background-color: #5a6268;
+    border-color: #5a6268;
+    transform: translateY(-2px);
+}
+
+/* Estilos para o Carrossel */
+.wine-detail__carousel-container {
+    max-width: 600px; /* Largura máxima para o carrossel */
+    margin: 30px auto; /* Centraliza e adiciona margem */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden; /* Garante que o conteúdo não vaze */
+}
+
+.wine-detail__carousel-inner {
+    border-radius: 10px;
+}
+
+.wine-detail__carousel-image {
+    border-radius: 10px; /* Borda arredondada para as imagens do carrossel */
+    object-fit: cover;
+    height: 400px; /* Altura fixa para as imagens do carrossel */
+}
+
+.wine-detail__carousel-control--prev,
+.wine-detail__carousel-control--next {
+    width: 15%; /* Aumenta a área clicável dos controles */
+    background: rgba(0, 0, 0, 0.3); /* Fundo semi-transparente para os controles */
+    transition: background-color 0.3s ease;
+}
+
+.wine-detail__carousel-control--prev:hover,
+.wine-detail__carousel-control--next:hover {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+/* Estilos para o formulário de comentários */
+.wine-detail__container-form { /* Adicionado para o contêiner do formulário de comentários */
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    margin-top: 40px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.wine-detail__form-formatting { /* Adicionado para o formulário */
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.wine-detail__form-formatting .input-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.wine-detail__form-formatting label {
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: var(--color-text-dark);
+}
+
+.wine-detail__form-formatting textarea {
+    padding: 12px;
+    border: 1px solid var(--color-border-light);
+    border-radius: 5px;
+    font-size: 1em;
+    resize: vertical; /* Permite redimensionar verticalmente */
+    min-height: 100px; /* Altura mínima para a caixa de texto */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.wine-detail__form-formatting textarea:focus {
+    outline: none;
+    border-color: var(--color-primary-burgundy);
+    box-shadow: 0 0 0 3px rgba(85, 13, 13, 0.15);
+}
+
+.wine-detail__form-formatting button[type="submit"] {
+    background-color: var(--color-primary-burgundy);
+    color: var(--color-text-light);
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    align-self: flex-start; /* Alinha o botão à esquerda */
+    margin-top: 15px;
+}
+
+.wine-detail__form-formatting button[type="submit"]:hover {
+    background-color: #6a1a1a;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Estilo para a mensagem de alerta de login */
+.wine-detail__alert-link { /* Alterado de .alert a */
+    font-weight: bold;
+    text-decoration: underline;
+    color: var(--color-primary-burgundy) !important; /* Para garantir a cor */
+}
+
+/* Estilos para os comentários */
+.comments {
+    max-width: 700px;
+    margin: 40px auto;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.comments h3 {
+    font-family: 'Playfair Display', serif;
+    color: var(--color-primary-burgundy);
+    font-size: 1.8em;
+    margin-bottom: 25px;
+    border-bottom: 1px solid var(--color-border-light);
+    padding-bottom: 10px;
+    text-align: center;
+}
+
+.comments__item { /* Alterado de .comments article */
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eee; /* Borda mais clara */
+    padding-bottom: 15px;
+}
+
+.comments__item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.comments__item p {
+    margin-bottom: 5px;
+    line-height: 1.6;
+}
+
+.comments__item strong {
+    color: var(--color-secondary-gold);
+}
+
+/* Rodapé */
+footer {
+    background-color: var(--color-primary-burgundy);
+    color: var(--color-text-light);
+    text-align: center;
+    padding: 20px;
+    margin-top: 50px; /* Espaço antes do rodapé */
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        gap: 10px;
+        padding: 15px;
+    }
+    .header__center {
+        text-align: center;
+        width: 100%;
+    }
+    .header__right {
+        justify-content: center;
+        width: 100%;
+        gap: 15px;
+    }
+    .wine-detail__container {
+        padding: 25px;
+    }
+    .wine-detail__carousel-container {
+        height: 300px;
+    }
+    .wine-detail__carousel-image {
+        height: 250px;
+    }
+    .wine-detail__container .display-4 {
+        font-size: 2.2em;
+    }
+    .wine-detail__container .lead {
+        font-size: 1.1em;
+    }
+    .wine-detail__container .text-success {
+        font-size: 1.6em;
+    }
+    .wine-detail__form-formatting button[type="submit"] {
+        width: 100%;
+        align-self: center;
+    }
+}
+
+@media (max-width: 576px) {
+    .wine-detail {
+        padding: 15px;
+    }
+    .wine-detail__container {
+        padding: 20px;
+    }
+    .wine-detail__carousel-container {
+        margin: 20px auto;
+    }
+    .wine-detail__carousel-image {
+        height: 200px;
+    }
+    .wine-detail__container .display-4 {
+        font-size: 1.8em;
+    }
+    .wine-detail__container .lead {
+        font-size: 1em;
+    }
+    .wine-detail__container .text-success {
+        font-size: 1.4em;
+    }
+    .comments {
+        padding: 20px;
+    }
+    .comments h3 {
+        font-size: 1.5em;
+    }
+}
