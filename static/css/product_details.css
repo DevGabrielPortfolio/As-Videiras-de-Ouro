@@ -2,16 +2,18 @@
 .header {
     background-color: var(--color-primary-burgundy);
     color: var(--color-text-light);
-    padding: 15px 30px;
+    padding: 15px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+    flex-wrap: wrap; /* Permite que os itens quebrem a linha em telas menores */
 }
 
 .header__center {
-    flex-grow: 1; /* Ocupa o espaço central */
+    flex-grow: 1; /* Permite que o centro ocupe o espaço restante */
     text-align: center;
+    margin-bottom: 5px; /* Espaçamento em telas pequenas */
 }
 
 .header__store-name {
@@ -30,7 +32,8 @@
 
 .header__right {
     display: flex;
-    gap: 20px; /* Espaço entre os links de ícone */
+    align-items: center;
+    margin-bottom: 5px;
 }
 
 .header__icon-link { /* Alterado de .header-right .icon-link */
