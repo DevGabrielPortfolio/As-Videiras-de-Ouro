@@ -17,7 +17,7 @@
     
     {% extends 'base.html' %}
 
-        {% block title %}Página Inicial - Les Vignes d’Or{% endblock %}
+    {% block title %}Página Inicial - Les Vignes d’Or{% endblock %}
 
     {% block content %}
 
@@ -90,11 +90,12 @@
                         <p>Subtotal: <span>R$ {{ "%.2f"|format(total_carrinho) }}</span></p>
                         <p class="cart__summary-total">Total: <span>R$ {{ "%.2f"|format(total_carrinho) }}</span></p>
                     </div>
-                    <button type="button" class="btn btn-primary cart__checkout-button" onclick="window.location.href='{{ url_for('finalizar_compra', total=total_carrinho) }}'">Finalizar Compra</button>
+                    <button type="button" class="btn btn-primary cart__checkout-button">Finalizar Compra</button>
                 </div>
             </div>
         </div>
     </section>
+    {% endblock %}
 
     <footer class="cart__footer">
         <p>&copy; 2025 Les Vignes d’Or.</p>
