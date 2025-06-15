@@ -54,6 +54,7 @@ def main_page():
     category_id = request.args.get('categoria', type=int)
 
     vinhos = []
+
     if category_id:
         vinhos = Wines.get_wines_by_category(category_id)
         if not vinhos:

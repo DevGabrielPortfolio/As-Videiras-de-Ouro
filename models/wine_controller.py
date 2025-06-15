@@ -6,95 +6,50 @@ class Wines:
     def get_all_wines():
         conn = None
         cursor = None
-        wines = []
         try:
             conn = Conection.create_conection()
             if conn is None:
-                print("ERRO_WINE: Falha ao conectar ao banco de dados para obter todos os vinhos.")
+                print("ERRO_WINE: Falha ao conectar ao banco de dados para obter vinhos.")
                 return []
+
             cursor = conn.cursor(dictionary=True)
-            sql = """
-                SELECT p.id_produto, p.nome, p.preco, p.descricao, i.url AS imagem_url
-                FROM tb_produtos p
-                LEFT JOIN tb_imagens i ON p.id_produto = i.id_produto
-                ORDER BY p.nome;
+
+            # 1. Buscar todos os vinhos
+            sql_vinhos = """
+                SELECT id_produto, nome, preco, descricao
+                FROM tb_produtos
+                ORDER BY nome;
             """
-            cursor.execute(sql)
-            wines = cursor.fetchall()
-            return wines
+            cursor.execute(sql_vinhos)
+            vinhos = cursor.fetchall()
+
+            # 2. Buscar todas as imagens
+            sql_imagens = """
+                SELECT id_produto, url
+                FROM tb_imagens;
+            """
+            cursor.execute(sql_imagens)
+            imagens = cursor.fetchall()
+
+            # 3. Agrupar imagens por id_produto
+            imagens_por_produto = {}
+            for img in imagens:
+                imagens_por_produto.setdefault(img['id_produto'], []).append({'url': img['url']})
+
+            # 4. Associar imagens aos vinhos
+            for vinho in vinhos:
+                vinho['imagens'] = imagens_por_produto.get(vinho['id_produto'], [])
+
+            return vinhos
+
         except Error as e:
-            print(f"ERRO_WINE_SQL: Erro no banco de dados ao obter todos os vinhos: {e}")
+            print(f"ERRO_WINE_SQL: {e}")
             return []
         except Exception as e:
-            print(f"ERRO_WINE_GERAL: Erro inesperado ao obter todos os vinhos: {e}")
+            print(f"ERRO_WINE_GERAL: {e}")
             return []
         finally:
             if cursor:
                 cursor.close()
             if conn and conn.is_connected():
                 conn.close()
-
-    @staticmethod
-    def get_wines_by_category(category_id):
-        conn = None
-        cursor = None
-        wines = []
-        try:
-            conn = Conection.create_conection()
-            if conn is None:
-                print("ERRO_WINE: Falha ao conectar ao banco de dados para obter vinhos por categoria.")
-                return []
-            cursor = conn.cursor(dictionary=True)
-            sql = """
-                SELECT p.id_produto, p.nome, p.preco, p.descricao, i.url AS imagem_url
-                FROM tb_produtos p
-                JOIN tb_categorias c ON p.id_categoria = c.id_categoria
-                LEFT JOIN tb_imagens i ON p.id_produto = i.id_produto
-                WHERE c.id_categoria = %s
-                ORDER BY p.nome;
-            """
-            cursor.execute(sql, (category_id,))
-            wines = cursor.fetchall()
-            return wines
-        except Error as e:
-            print(f"ERRO_WINE_SQL: Erro no banco de dados ao obter vinhos por categoria: {e}")
-            return []
-        except Exception as e:
-            print(f"ERRO_WINE_GERAL: Erro inesperado ao obter vinhos por categoria: {e}")
-            return []
-        finally:
-            if cursor:
-                cursor.close()
-            if conn and conn.is_connected():
-                conn.close()
-
-    @staticmethod
-    def get_wine_by_id(wine_id):
-        conn = None
-        cursor = None
-        wine = None
-        try:
-            conn = Conection.create_conection()
-            if conn is None:
-                return None
-            cursor = conn.cursor(dictionary=True)
-            sql = """
-                SELECT p.id_produto, p.nome, p.preco, p.descricao, i.url AS imagem_url
-                FROM tb_produtos p
-                LEFT JOIN tb_imagens i ON p.id_produto = i.id_produto
-                WHERE p.id_produto = %s;
-            """
-            cursor.execute(sql, (wine_id,))
-            wine = cursor.fetchone()
-            return wine
-        except Error as e:
-            print(f"ERRO_WINE_SQL: Erro no banco de dados ao obter vinho por ID: {e}")
-            return None
-        except Exception as e:
-            print(f"ERRO_WINE_GERAL: Erro inesperado ao obter vinho por ID: {e}")
-            return None
-        finally:
-            if cursor:
-                cursor.close()
-            if conn and conn.is_connected():
-                    conn.close()

@@ -25,149 +25,136 @@
 
     <script src="https://kit.fontawesome.com/8991f246e8.js" crossorigin="anonymous"></script>
 
-    <!-- Importação do framework "bootstrap" -->
-
-
-
-    <!-- Importação da fonte do google -->
-
-
-
 </head>
 
 <body>
 
-<header class="header">
+    <header class="header">
 
-    <div class="header__store-name header__main-left">
+        <div class="header__store-name header__main-left">
 
-        <form action="{{ url_for('main_page') }}" method="get" id="filter-form" class="category-filter">
+            <form action="{{ url_for('main_page') }}" method="get" id="filter-form" class="category-filter">
 
-            <select name="categoria" class="header__main-category-select" onchange="this.form.submit()">
+                <select name="categoria" class="header__main-category-select" onchange="this.form.submit()">
 
-                <option value="" {% if not request.args.get('categoria') %}selected{% endif %}>Todas as Categorias
-                </option>
+                    <option value="" {% if not request.args.get('categoria') %}selected{% endif %}>Todas as Categorias
+                    </option>
 
-                {% for categoria in categorias %}
+                    {% for categoria in categorias %}
 
-                <option value="{{ categoria.id_categoria }}" {% set
-                    selected_category_id=request.args.get('categoria') %} {% if selected_category_id is not none and
-                    selected_category_id is not string and selected_category_id|int==categoria.id_categoria %}
-                    selected {% elif selected_category_id is string and
-                    selected_category_id|int(default=-1)==categoria.id_categoria %} selected {% endif %}>
-                    {{ categoria['nome'] }}
-                </option>
-
-                {% endfor %}
-
-            </select><!--header__main-category-select-->
-
-        </form><!--category-filter-->
-
-    </div><!--header__section header__section--left-->
-
-    <div class="header__store-name header__center">
-
-        <a href="{{ url_for('main_page') }}" class="header__brand">Les Vignes d’Or</a>
-
-    </div><!--header__store-name header__store--center-->
-
-    <div class="header__store-name header__main-right">
-
-        {% if 'user_id' in session %}
-
-        <a href="{{ url_for('logout') }}" class="header__icon-link" title="Sair ({{ session.username }})">
-
-            <i class="fas fa-sign-out-alt"></i>
-
-        </a><!--header__icon-link-->
-
-        {% else %}
-
-        <a href="{{ url_for('create_acount') }}" class="header__icon-link" title="Entrar / Criar Conta">
-
-            <i class="fas fa-user-circle"></i>
-
-        </a><!--header__icon-link-->
-
-        {% endif %}
-
-        <a href="{{ url_for('carrinho') }}" class="header__icon-link" title="Carrinho">
-
-            <i class="fas fa-shopping-cart"></i>
-
-        </a><!--header__icon-link-->
-
-    </div><!--header__section header__section--right-->
-
-</header><!--header-->
-
-        <main>
-
-            <section class="store">
-
-                {% with messages = get_flashed_messages(with_categories=true) %}
-                    {% if messages %}
-                        {% for category, message in messages %}
-
-                            <p class="alert alert-{{ category }}" role="alert">{{ message }}</p>
-
-                        {% endfor %}
-                    {% endif %}
-                {% endwith %}
-
-                
-            <div id="carouselExample" class="carousel slide store__carousel-container">
-                <div class="carousel-inner store__carousel-inner">
-                    <div class="carousel-item active">
-                    <img src="..." class="d-block w-100 store__carousel-image" alt="...">
-                    </div>
-                    <div class="carousel-item">
-                    <img src="..." class="d-block w-100 store__carousel-image" alt="...">
-                    </div>
-                    <div class="carousel-item">
-                    <img src="..." class="d-block w-100 store__carousel-image" alt="...">
-                    </div>
-                </div>
-                <button class="carousel-control-prev store__carousel-control--prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next store__carousel-control--next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
-            </div>
-                
-                <h1 class="store__title">Nossos Vinhos</h1>
-
-                <div class="store__grid">
-                    {# Loop sobre 'produtos' (que são os vinhos), conforme passado pelo Flask #}
-                    
-                    {% for vinho in produtos %}
-
-                    <article class="product-card">
-
-                        <img src="{{ vinho.imagem_url }}" alt="{{ vinho.nome }}" class="product-card__image">
-                        <h3 class="product-card__name">{{ vinho.nome }}</h3>
-                        <p class="product-card__description">{{ vinho.descricao }}</p>
-                        <p class="product-card__price">R$ {{ '%.2f'|format(vinho.preco) }}</p>
-                        <a href="{{ url_for('detalhes_vinho', vinho_id=vinho.id_produto) }}"
-                            class="product-card__details-button">Ver Detalhes</a>
-
-                    </article><!--product-card-->
-
-                    {% else %}
-
-                    <p class="store__error-message">Nenhum vinho encontrado.</p>
+                    <option value="{{ categoria.id_categoria }}" {% set
+                        selected_category_id=request.args.get('categoria') %} {% if selected_category_id is not none and
+                        selected_category_id is not string and selected_category_id|int==categoria.id_categoria %}
+                        selected {% elif selected_category_id is string and
+                        selected_category_id|int(default=-1)==categoria.id_categoria %} selected {% endif %}>
+                        {{ categoria['nome'] }}
+                    </option>
 
                     {% endfor %}
 
-                </div><!--store__grid-->
+                </select><!--header__main-category-select-->
 
-            </section><!--store-->
+            </form><!--category-filter-->
 
-        </main>
+        </div><!--header__section header__section--left-->
+
+        <div class="header__store-name header__center">
+
+            <a href="{{ url_for('main_page') }}" class="header__brand">Les Vignes d’Or</a>
+
+        </div><!--header__store-name header__store--center-->
+
+        <div class="header__store-name header__main-right">
+
+            {% if 'user_id' in session %}
+
+            <a href="{{ url_for('logout') }}" class="header__icon-link" title="Sair ({{ session.username }})">
+
+                <i class="fas fa-sign-out-alt"></i>
+
+            </a><!--header__icon-link-->
+
+            {% else %}
+
+            <a href="{{ url_for('create_acount') }}" class="header__icon-link" title="Entrar / Criar Conta">
+
+                <i class="fas fa-user-circle"></i>
+
+            </a><!--header__icon-link-->
+
+            {% endif %}
+
+            <a href="{{ url_for('carrinho') }}" class="header__icon-link" title="Carrinho">
+
+                <i class="fas fa-shopping-cart"></i>
+
+            </a><!--header__icon-link-->
+
+        </div><!--header__section header__section--right-->
+
+    </header><!--header-->
+
+    {% block content %}
+
+    <section class="store">
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        {% for category, message in messages %}
+
+        <p class="alert alert-{{ category }}" role="alert">{{ message }}</p>
+
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+
+
+
+        <h1 class="store__title">Nossos Vinhos</h1>
+
+        <div class="store__grid">
+            {# Loop sobre 'produtos' (que são os vinhos), conforme passado pelo Flask #}
+
+            {% for vinho in produtos %}
+            <article class="product-card">
+
+                <!-- Carrossel por vinho -->
+                <div id="carousel-vinho-{{ vinho.id_produto }}" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        {% for imagem in vinho.imagens %}
+                        <div class="carousel-item {% if loop.index0 == 0 %}active{% endif %}">
+                            <img src="{{ imagem.url }}" class="d-block w-100 product-card__image"
+                                alt="{{ vinho.nome }}">
+                        </div>
+                        {% endfor %}
+                    </div>
+
+                    {% if vinho.imagens|length > 1 %}
+                    <button class="carousel-control-prev" type="button"
+                        data-bs-target="#carousel-vinho-{{ vinho.id_produto }}" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Anterior</span>
+                    </button>
+                    <button class="carousel-control-next" type="button"
+                        data-bs-target="#carousel-vinho-{{ vinho.id_produto }}" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Próximo</span>
+                    </button>
+                    {% endif %}
+                </div>
+
+                <h3 class="product-card__name">{{ vinho.nome }}</h3>
+                <p class="product-card__description">{{ vinho.descricao }}</p>
+                <p class="product-card__price">R$ {{ '%.2f'|format(vinho.preco) }}</p>
+                <a href="{{ url_for('detalhes_vinho', vinho_id=vinho.id_produto) }}"
+                    class="product-card__details-button">Ver Detalhes</a>
+
+            </article>
+            {% endfor %}
+
+        </div><!--store__grid-->
+
+    </section><!--store-->
     {% endblock %}
 
 </body>
