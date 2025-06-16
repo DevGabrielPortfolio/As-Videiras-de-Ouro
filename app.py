@@ -23,10 +23,13 @@ def login_required(f):
     def decorated_function(*args, **kwargs):
         if 'user_id' not in session:
             flash('Você precisa estar logado para acessar esta página.', 'info')
-            return redirect(url_for('login'))  # Redireciona para a rota de login
+            return redirect(url_for('login'))
         return f(*args, **kwargs)
 
     return decorated_function
+
+
+
 
 
 @app.route('/logout')
@@ -37,7 +40,7 @@ def logout():
     """
     session.pop('user_id', None)
     session.pop('username', None)
-    flash('Você foi desconectado com sucesso.', 'success') # Adiciona uma mensagem de sucesso ao deslogar
+    flash('Você foi desconectado com sucesso.', 'success')
     return redirect(url_for('main_page'))
 
 
@@ -69,12 +72,17 @@ def main_page():
 
 
 
+
+
 @app.route('/configuracoes-conta')
 def create_acount():
     """
     Rota para a página de criação de conta/configurações.
     """
     return render_template('create_account_page.html')
+
+
+
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -93,7 +101,7 @@ def login():
             user_id, username_from_db = login_info
             session['user_id'] = user_id
             session['username'] = username_from_db
-            flash(f'Bem-vindo(a) de volta, {username_from_db}!', 'success') # Mensagem de sucesso no login
+            flash(f'Bem-vindo(a) de volta, {username_from_db}!', 'success')
             return redirect(url_for('main_page'))
         else:
             flash('Credenciais inválidas. Verifique seu usuário/e-mail e senha.', 'danger')
@@ -102,6 +110,8 @@ def login():
         flashed_messages = get_flashed_messages(with_categories=True)
         return render_template('login.html', flashed_messages=flashed_messages)
     
+
+
 
 
 @app.route('/cadastrar_usuario', methods=['POST'])
@@ -135,7 +145,7 @@ def register_user():
     try:
         user_id = Users.register_user(
             username=username,
-            password_plaintext=password,  # Passando a senha em texto puro aqui!
+            password_plaintext=password, #Senha passada em texto pura para ser criptografada na inserção do banco de dados
             telefone=telefone,
             email=email,
             cep=cep,
@@ -162,6 +172,8 @@ def register_user():
 
 
 
+
+
 @app.route('/carrinho')
 @login_required
 def carrinho():
@@ -169,14 +181,12 @@ def carrinho():
     Rota para exibir o carrinho de compras do usuário logado.
     """
     id_usuario = session['user_id']
-    # A verificação de id_usuario já é feita pelo decorador login_required
-    # if not id_usuario:
-    #     flash('Você precisa estar logado para ver seu carrinho.', 'danger')
-    #     return redirect(url_for('login'))
 
     itens_carrinho = ControlShoppingCart.get_itens_carrinho_por_usuario(id_usuario)
     total_carrinho = sum(item['preco_unitario'] * item['quantidade'] for item in itens_carrinho)
     return render_template('cart.html', itens_carrinho=itens_carrinho, total_carrinho=total_carrinho)
+
+
 
 
 
@@ -190,10 +200,8 @@ def detalhes_vinho(vinho_id):
     if vinho:
         categorias = Categories.get_all_categories()
 
-        # CHAME A FUNÇÃO PARA BUSCAR OS COMENTÁRIOS AQUI
         comentarios = Comments.get_comments_by_product_id(vinho_id)
 
-        # PASSE OS COMENTÁRIOS PARA O TEMPLATE
         return render_template('wine_details.html', 
                                vinho=vinho, 
                                categorias=categorias, 
@@ -204,8 +212,11 @@ def detalhes_vinho(vinho_id):
         return redirect(url_for('main_page'))
     
 
+
+
+
 @app.route('/adicionar_ao_carrinho', methods=['POST'])
-@login_required# Garante que apenas usuários logados possam adicionar ao carrinho
+@login_required
 def adicionar_ao_carrinho():
     """
     Rota para adicionar ou atualizar um item no carrinho de compras.
@@ -237,8 +248,10 @@ def adicionar_ao_carrinho():
 
 
 
+
+
 @app.route('/remover_do_carrinho', methods=['POST'])
-@login_required # Garante que apenas usuários logados possam remover do carrinho
+@login_required
 def remover_do_carrinho():
     """
     Rota para remover um item do carrinho de compras.
@@ -262,8 +275,10 @@ def remover_do_carrinho():
 
 
 
+
+
 @app.route('/atualizar_quantidade_carrinho', methods=['POST'])
-@login_required # Garante que apenas usuários logados possam atualizar o carrinho
+@login_required
 def atualizar_quantidade_carrinho():
     """
     Rota para atualizar a quantidade de um item no carrinho.
@@ -294,6 +309,9 @@ def atualizar_quantidade_carrinho():
     return redirect(url_for('carrinho'))
 
 
+
+
+
 @app.route('/post/cadastrarmensagem', methods=['POST'])
 @login_required
 def cadastrar_comentario():
@@ -320,6 +338,7 @@ def cadastrar_comentario():
 
 
 
+
 @app.route('/finalizar_compra')
 @login_required
 def finalizar_compra():
@@ -339,6 +358,9 @@ def finalizar_compra():
 
     # Renderiza a página de simulação de pagamento, passando o total E os itens do carrinho
     return render_template('payment_simulation.html', itens_carrinho=itens_carrinho, total_carrinho=total_carrinho)
+
+
+
 
 
 if __name__ == '__main__':
