@@ -1,0 +1,10 @@
+.footer {
+    background-color: var(--color-primary-burgundy);
+    color: var(--color-secondary-gold);
+    padding: 15px 20px;
+    text-align: center;
+    font-family: 'Playfair Display', serif;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+    flex-wrap: wrap; /* Permite que os itens quebrem a linha em telas menores */
+ 
+}
