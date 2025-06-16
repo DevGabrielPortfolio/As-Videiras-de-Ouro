@@ -76,7 +76,7 @@
                     <div class="wine-detail__container">
                         <h1 class="display-4 mb-3">{{ vinho.nome }}</h1>
                         <p class="lead">{{ vinho.descricao }}</p>
-                        <h2 class="text-success mb-4">R$ {{ '%.2f'|format(vinho.preco) }}</h2>
+                        <h2 class="text-success mb-4">{{ format_currency(vinho.preco, 'BRL') }}</h2>
 
                         <form action="{{ url_for('adicionar_ao_carrinho') }}" method="POST">
                             <input type="hidden" name="produto_id" value="{{ vinho.id_produto }}">
