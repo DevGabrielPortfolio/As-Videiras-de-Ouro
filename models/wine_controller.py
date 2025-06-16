@@ -1,5 +1,6 @@
 from config.data.connection import Conection
-from mysql.connector import Error # Importa especificamente a classe Error para tratamento de exceções
+from mysql.connector import Error
+from decimal import Decimal
 
 class Wines:
 
@@ -12,17 +13,12 @@ class Wines:
         """
         wines_with_images = []
         try:
-            # Usa context manager para a conexão. Garante que conn.close() será chamado.
             with Conection.create_conection() as conn:
                 if conn is None:
                     print("ERRO_WINE_CONNECTION: Falha ao conectar ao banco de dados para obter todos os vinhos.")
                     return []
                 
-                # Usa context manager para o cursor. Garante que cursor.close() será chamado.
-                with conn.cursor(dictionary=True) as cursor: # dictionary=True retorna resultados como dicionários
-                    # Consulta SQL otimizada para buscar vinhos e todas as suas imagens
-                    # LEFT JOIN tb_imagens garante que vinhos sem imagens também sejam incluídos.
-                    # ORDER BY p.id_produto, i.id_imagem é crucial para o agrupamento em Python.
+                with conn.cursor(dictionary=True) as cursor: 
                     sql = """
                         SELECT p.id_produto, p.nome, p.preco, p.descricao, i.url AS imagem_url
                         FROM tb_produtos p
@@ -30,41 +26,32 @@ class Wines:
                         ORDER BY p.id_produto, i.id_imagem;
                     """
                     cursor.execute(sql)
-                    
-                    # ESSENCIAL: Consome todos os resultados da consulta.
-                    # Isso previne o erro 'Unread result found'.
+
                     rows = cursor.fetchall() 
 
-                    # Dicionário para agrupar as imagens a cada vinho
                     wines_dict = {}
                     for row in rows:
                         wine_id = row['id_produto']
-                        # Se o vinho ainda não foi adicionado ao dicionário, crie sua entrada base
                         if wine_id not in wines_dict:
+                            preco_decimal = Decimal(row['preco']) if row['preco'] is not None else Decimal('0.00')
                             wines_dict[wine_id] = {
                                 'id_produto': row['id_produto'],
                                 'nome': row['nome'],
-                                'preco': row['preco'],
+                                'preco': preco_decimal,
                                 'descricao': row['descricao'],
-                                'imagens': [] # Inicializa uma lista vazia para as URLs das imagens
+                                'imagens': []
                             }
-                        # Adiciona a URL da imagem à lista de imagens do vinho correspondente
-                        # Garante que 'None' não seja adicionado se o vinho não tiver imagens
                         if row['imagem_url']: 
                             wines_dict[wine_id]['imagens'].append({'url': row['imagem_url']})
-
-                    # Converte o dicionário de vinhos de volta para uma lista de dicionários
                     wines_with_images = list(wines_dict.values())
                     return wines_with_images
 
-        except Error as e: # Captura erros específicos do MySQL Connector
+        except Error as e:
             print(f"ERRO_WINE_SQL (get_all_wines): Erro no banco de dados ao obter todos os vinhos: {e}")
             return []
-        except Exception as e: # Captura quaisquer outras exceções inesperadas
+        except Exception as e:
             print(f"ERRO_WINE_GERAL (get_all_wines): Erro inesperado ao obter todos os vinhos: {e}")
             return []
-        # O bloco 'finally' com cursor.close() e conn.close() não é mais necessário
-        # devido ao uso dos 'with' statements (context managers).
 
 
     @staticmethod
@@ -75,13 +62,11 @@ class Wines:
         """
         wines_with_images = []
         try:
-            # Usa context manager para a conexão
             with Conection.create_conection() as conn:
                 if conn is None:
                     print(f"ERRO_WINE_CONNECTION: Falha ao conectar ao banco de dados para obter vinhos na categoria {category_id}.")
                     return []
-                
-                # Usa context manager para o cursor
+
                 with conn.cursor(dictionary=True) as cursor:
                     sql = """
                         SELECT p.id_produto, p.nome, p.preco, p.descricao, i.url AS imagem_url
@@ -92,19 +77,18 @@ class Wines:
                         ORDER BY p.id_produto, i.id_imagem;
                     """
                     cursor.execute(sql, (category_id,))
-                    
-                    # ESSENCIAL: Consome todos os resultados da consulta.
-                    # Isso previne o erro 'Unread result found'.
+
                     rows = cursor.fetchall()
 
                     wines_dict = {}
                     for row in rows:
                         wine_id = row['id_produto']
                         if wine_id not in wines_dict:
+                            preco_decimal = Decimal(row['preco']) if row['preco'] is not None else Decimal('0.00')
                             wines_dict[wine_id] = {
                                 'id_produto': row['id_produto'],
                                 'nome': row['nome'],
-                                'preco': row['preco'],
+                                'preco': preco_decimal,
                                 'descricao': row['descricao'],
                                 'imagens': []
                             }
@@ -129,13 +113,10 @@ class Wines:
         Utiliza LEFT JOIN e context managers para garantir o fechamento adequado.
         """
         try:
-            # Usa context manager para a conexão
             with Conection.create_conection() as conn:
                 if conn is None:
                     print("ERRO_WINE_CONNECTION: Falha ao conectar ao banco de dados para obter vinho por ID.")
                     return None
-                
-                # Usa context manager para o cursor
                 with conn.cursor(dictionary=True) as cursor:
                     sql = """
                         SELECT p.id_produto, p.nome, p.preco, p.descricao, i.url AS imagem_url
@@ -145,20 +126,17 @@ class Wines:
                         ORDER BY i.id_imagem;
                     """
                     cursor.execute(sql, (wine_id,))
-                    
-                    # ESSENCIAL: Consome todos os resultados da consulta.
-                    # Isso previne o erro 'Unread result found'.
+
                     rows = cursor.fetchall()
 
                     if not rows:
-                        return None # Vinho não encontrado
-
-                    # Como pode haver múltiplas linhas para o mesmo vinho (uma por imagem),
-                    # pegamos os dados base do primeiro registro e agrupamos as imagens.
+                        return None
+                    
+                    preco_decimal = Decimal(rows[0]['preco']) if rows[0]['preco'] is not None else Decimal('0.00')
                     wine_data = {
                         'id_produto': rows[0]['id_produto'],
                         'nome': rows[0]['nome'],
-                        'preco': rows[0]['preco'],
+                        'preco': preco_decimal,
                         'descricao': rows[0]['descricao'],
                         'imagens': []
                     }

@@ -147,7 +147,7 @@
 
                 <h3 class="product-card__name">{{ vinho.nome }}</h3>
                 <p class="product-card__description">{{ vinho.descricao }}</p>
-                <p class="product-card__price">R$ {{ '%.2f'|format(vinho.preco) }}</p>
+                <p class="product-card__price">{{ format_currency(vinho.preco, 'BRL') }}</p>
                 <a href="{{ url_for('detalhes_vinho', vinho_id=vinho.id_produto) }}"
                     class="product-card__details-button">Ver Detalhes</a>
 

@@ -51,7 +51,7 @@
                                 <img src="{{ item.imagem_produto }}" alt="{{ item.nome_produto }}" class="cart__item-image">
                                 <div class="cart__item-details">
                                     <span class="cart__item-name">{{ item.nome_produto }}</span>
-                                    <span class="cart__item-price">R$ {{ "%.2f"|format(item.preco_unitario) }}</span>
+                                    <span class="cart__item-price"><p>{{ format_currency(item.preco_unitario, 'BRL') }}</p></span>
                                     <div class="cart__item-quantity">
                                         {# Formulário para diminuir quantidade #}
                                         <form action="{{ url_for('atualizar_quantidade_carrinho') }}" method="POST" style="display:inline;">
@@ -89,9 +89,7 @@
                 <div class="cart__summary-section">
                     <h3 class="cart__summary-title">Resumo do Pedido</h3>
                     <div class="cart__summary-details">
-                        {# Subtotal (pode ser calculado na rota ou aqui) #}
-                        <p>Subtotal: <span>R$ {{ "%.2f"|format(total_carrinho) }}</span></p>
-                        <p class="cart__summary-total">Total: <span>R$ {{ "%.2f"|format(total_carrinho) }}</span></p>
+                        <p class="cart__summary-total">Total: <span>{{ format_currency(total_carrinho, 'BRL') }}</span></p>
                     </div>
                     <button type="button" class="btn btn-primary cart__checkout-button">Finalizar Compra</button>
                 </div>

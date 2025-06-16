@@ -7,11 +7,40 @@ from models.shopping_cart_controller import ControlShoppingCart
 from models.comments_controller import Comments
 from models.user_controller import Users
 
+
+from flask_babel import Babel, format_currency, format_decimal, format_number
+from decimal import Decimal
+
+
 app = Flask(__name__)
 
 app.secret_key = 'sua_chave_secreta_super_segura_aqui_12345'
 
 
+app.config['BABEL_DEFAULT_LOCALE'] = 'pt_BR'
+app.config['BABEL_DEFAULT_TIMEZONE'] = 'America/Sao_Paulo'
+
+
+babel = Babel(app)
+
+# Remova a linha abaixo: @babel.localeselector
+# O erro ocorre porque 'localeselector' não é um decorador no objeto Babel.
+
+def get_locale():
+    return 'pt_BR'
+
+# Adicione esta linha para associar a função get_locale ao Babel.
+# Isso deve vir *depois* da criação do objeto 'babel'.
+babel.init_app(app, locale_selector=get_locale)
+
+
+@app.context_processor
+def inject_formats():
+    return dict(
+        format_currency=format_currency,
+        format_decimal=format_decimal,
+        format_number=format_number
+    )
 
 
 def login_required(f):
@@ -29,9 +58,6 @@ def login_required(f):
     return decorated_function
 
 
-
-
-
 @app.route('/logout')
 def logout():
     """
@@ -42,9 +68,6 @@ def logout():
     session.pop('username', None)
     flash('Você foi desconectado com sucesso.', 'success')
     return redirect(url_for('main_page'))
-
-
-
 
 
 @app.route('/')
@@ -71,18 +94,12 @@ def main_page():
     return render_template('home.html', categorias=categorias, produtos=vinhos)
 
 
-
-
-
 @app.route('/configuracoes-conta')
 def create_acount():
     """
     Rota para a página de criação de conta/configurações.
     """
     return render_template('create_account_page.html')
-
-
-
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -110,8 +127,6 @@ def login():
         flashed_messages = get_flashed_messages(with_categories=True)
         return render_template('login.html', flashed_messages=flashed_messages)
     
-
-
 
 
 @app.route('/cadastrar_usuario', methods=['POST'])
@@ -171,9 +186,6 @@ def register_user():
         return redirect(url_for('create_acount'))
 
 
-
-
-
 @app.route('/carrinho')
 @login_required
 def carrinho():
@@ -185,9 +197,6 @@ def carrinho():
     itens_carrinho = ControlShoppingCart.get_itens_carrinho_por_usuario(id_usuario)
     total_carrinho = sum(item['preco_unitario'] * item['quantidade'] for item in itens_carrinho)
     return render_template('cart.html', itens_carrinho=itens_carrinho, total_carrinho=total_carrinho)
-
-
-
 
 
 @app.route('/vinho/<int:vinho_id>')
@@ -211,8 +220,6 @@ def detalhes_vinho(vinho_id):
         flash('Vinho não encontrado.', 'danger')
         return redirect(url_for('main_page'))
     
-
-
 
 
 @app.route('/adicionar_ao_carrinho', methods=['POST'])
@@ -247,9 +254,6 @@ def adicionar_ao_carrinho():
     return redirect(url_for('carrinho'))
 
 
-
-
-
 @app.route('/remover_do_carrinho', methods=['POST'])
 @login_required
 def remover_do_carrinho():
@@ -272,9 +276,6 @@ def remover_do_carrinho():
         flash('Ocorreu um erro ao remover o produto do carrinho.', 'danger')
 
     return redirect(url_for('carrinho'))
-
-
-
 
 
 @app.route('/atualizar_quantidade_carrinho', methods=['POST'])
@@ -309,9 +310,6 @@ def atualizar_quantidade_carrinho():
     return redirect(url_for('carrinho'))
 
 
-
-
-
 @app.route('/post/cadastrarmensagem', methods=['POST'])
 @login_required
 def cadastrar_comentario():
@@ -334,34 +332,5 @@ def cadastrar_comentario():
         flash('Erro ao enviar o comentário. Tente novamente.', 'danger')
 
     return redirect(url_for('detalhes_vinho', vinho_id=id_produto))
-
-
-
-
-
-@app.route('/finalizar_compra')
-@login_required
-def finalizar_compra():
-    """
-    Rota para a página de finalização de compra/pagamento.
-    Obtém os itens reais do carrinho do usuário e o total.
-    """
-    id_usuario = session.get('user_id')
-    # A verificação de id_usuario já é feita pelo decorador login_required
-    # if not id_usuario:
-    #     flash('Você precisa estar logado para finalizar a compra.', 'danger')
-    #     return redirect(url_for('login'))
-
-    # Obtém os itens do carrinho para calcular o total
-    itens_carrinho = ControlShoppingCart.get_itens_carrinho_por_usuario(id_usuario)
-    total_carrinho = sum(item['preco_unitario'] * item['quantidade'] for item in itens_carrinho)
-
-    # Renderiza a página de simulação de pagamento, passando o total E os itens do carrinho
-    return render_template('payment_simulation.html', itens_carrinho=itens_carrinho, total_carrinho=total_carrinho)
-
-
-
-
-
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=8080, debug=True)
