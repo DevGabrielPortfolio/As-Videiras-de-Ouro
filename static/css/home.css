@@ -180,7 +180,7 @@
 
 
 /* responsividade */
-@media (max-width: 992px) {
+@media (max-width: 992px) { /* Responsividade desktop */
     .header {
         padding: 10px;
 
@@ -211,7 +211,7 @@
     .store__carousel-container {
         max-width: 100%; 
         margin: 30px 0; 
-        
+
         border-radius: 0; 
         box-shadow: none; 
     }
@@ -228,7 +228,7 @@
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 768px) { /* responsividade tablet */
     .container {
         padding: 0 10px;
     }
@@ -244,7 +244,7 @@
     }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 480px) { /* responsividade celular */
     .header__brand {
         font-size: 1.5em;
     }

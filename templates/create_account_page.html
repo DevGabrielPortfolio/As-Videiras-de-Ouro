@@ -26,6 +26,7 @@
 
     {% block content %}
 
+    <!-- seção de registro da pagina -->
     <section class="register" >
         <main class="register__main-container">
             <h2 class="register__title">Crie sua Conta</h2>
@@ -33,7 +34,8 @@
             <a href="{{ url_for('main_page') }}" class="btn btn-secondary back-button">
                 <i class="fas fa-arrow-left"></i> Voltar para Início
             </a>
-    
+        
+            
             {% with messages = get_flashed_messages(with_categories=true) %}
                 {% if messages %}
                     <div class="flash-messages-container"> {# Opcional: um contêiner para estilização #}
@@ -46,8 +48,12 @@
                     </div>
                 {% endif %}
             {% endwith %}
-    
+
+
+            <!-- formulario de dados do usuario -->
             <form action="/cadastrar_usuario" method="post" class="register__form">
+                
+                <!-- dados pessoais -->
                 <fieldset class="register__form-section">
                     <legend class="register__form-title">Dados Pessoais</legend>
                     <div class="register__form-section">
@@ -68,7 +74,7 @@
                     </div>
                 </fieldset>
                     
-                
+                <!-- Dados de localização -->
                 <fieldset class="register__form-section">
 
                     <legend class="register__form-title">Endereço</legend>
@@ -104,7 +110,7 @@
                     </div>
                 </fieldset>
                 
-                
+                <!-- senha da conta -->
                 <fieldset class="register__form-section">
                     <legend class="register__form-title">Informações de Segurança</legend>
                     <div class="register__form-group">
