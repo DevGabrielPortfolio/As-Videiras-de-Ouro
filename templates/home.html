@@ -4,8 +4,6 @@
 <head>
 
     <meta charset="UTF-8">
-
-    <!-- Fornecer uma descrição breve e precisa da página, que pode ser exibida nos resultados de pesquisa como o trecho (snippet) abaixo do título. -->
     <meta name="description"
         content="Conheça Les Vignes d’Or, vinhos artesanais da França direto para você. Explore nossa coleção e compre online com segurança.">
 
@@ -13,28 +11,29 @@
 
     <title>Les Vignes d’Or – Vinhos Artesanais da França | Loja Oficial</title>
 
-    <!-- Importação de arquivos de estilo -->
-
+    <!-- importação css -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/_config.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/header.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}">
+    <!-- importação font-awesome(icones) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://kit.fontawesome.com/8991f246e8.js" crossorigin="anonymous"></script>
+    <!-- importação bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" defer></script>
 
-    <!-- Importação do framework "font awesome" -->
 
-    <script src="https://kit.fontawesome.com/8991f246e8.js" crossorigin="anonymous"></script>
+
 
 </head>
 
 <body>
 
+
+    <!-- header da pagina inicial -->
     <header class="header">
-
         <div class="header__store-name header__main-left">
-
             <form action="{{ url_for('main_page') }}" method="get" id="filter-form" class="category-filter">
 
                 <select name="categoria" class="header__main-category-select" onchange="this.form.submit()">
@@ -42,8 +41,8 @@
                     <option value="" {% if not request.args.get('categoria') %}selected{% endif %}>Todas as Categorias
                     </option>
 
+                    <!-- container de seleção de categoria -->
                     {% for categoria in categorias %}
-
                     <option value="{{ categoria.id_categoria }}" {% set
                         selected_category_id=request.args.get('categoria') %} {% if selected_category_id is not none and
                         selected_category_id is not string and selected_category_id|int==categoria.id_categoria %}
@@ -54,50 +53,45 @@
 
                     {% endfor %}
 
-                </select><!--header__main-category-select-->
+                </select>
 
-            </form><!--category-filter-->
+            </form>
 
-        </div><!--header__section header__section--left-->
+        </div>
 
+        <!-- Logo do site -->
         <div class="header__store-name header__center">
-
             <a href="{{ url_for('main_page') }}" class="header__brand">Les Vignes d’Or</a>
+        </div>
 
-        </div><!--header__store-name header__store--center-->
-
+        <!-- icones do header -->
         <div class="header__store-name header__main-right">
 
             {% if 'user_id' in session %}
 
             <a href="{{ url_for('logout') }}" class="header__icon-link" title="Sair ({{ session.username }})">
-
                 <i class="fas fa-sign-out-alt"></i>
-
-            </a><!--header__icon-link-->
+            </a>
 
             {% else %}
 
             <a href="{{ url_for('create_acount') }}" class="header__icon-link" title="Entrar / Criar Conta">
-
                 <i class="fas fa-user-circle"></i>
-
-            </a><!--header__icon-link-->
+            </a>
 
             {% endif %}
 
             <a href="{{ url_for('carrinho') }}" class="header__icon-link" title="Carrinho">
-
                 <i class="fas fa-shopping-cart"></i>
+            </a>
 
-            </a><!--header__icon-link-->
+        </div>
 
-        </div><!--header__section header__section--right-->
-
-    </header><!--header-->
+    </header>
 
     {% block content %}
 
+    <!-- seção com os itens da loja -->
     <section class="store">
 
         {% with messages = get_flashed_messages(with_categories=true) %}
@@ -111,16 +105,17 @@
         {% endwith %}
 
 
-
+        <!-- Texto de apresentação -->
         <h1 class="store__title">Nossos Vinhos</h1>
 
+        <!-- Produtos da loja -->
         <div class="store__grid">
             {# Loop sobre 'produtos' (que são os vinhos), conforme passado pelo Flask #}
 
             {% for vinho in produtos %}
             <article class="product-card">
 
-                <!-- Carrossel por vinho -->
+            
                 <div id="carousel-vinho-{{ vinho.id_produto }}" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-inner">
                         {% for imagem in vinho.imagens %}
@@ -154,16 +149,18 @@
             </article>
             {% endfor %}
 
-        </div><!--store__grid-->
+        </div>
 
-    </section><!--store-->
+    </section>
     {% endblock %}
 
+
+    <!-- footer pagina inicial -->
     <footer class="footer">
 
     <p class="footer__paragraph">&copy; 2025 Les Vignes d’Or. Todos os direitos reservados.</p>
 
-    </footer><!--footer-->
+    </footer>
 
 </body>
 
