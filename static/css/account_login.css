@@ -1,100 +1,121 @@
-/* Header */
-
-.login__container { /* Changed from .login-container */
-    background-color: var(--color-background-light);
+/* Container Principal da pagina */
+.login__container { 
+    padding: 25px;
+    min-height: 100vh;
+    margin: 0;
+    
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
-    margin: 0;
-    padding: 25px;
     flex-direction: column;
+   
+    background-color: var(--color-background-light);
     box-sizing: border-box;
 }
-
-.login__main-container { /* Alterado de .login-container para .register__main-container */
-    background-color: #fff;
+/* Main da pagina */
+.login__main-container { 
+    width: 100%;
+    max-width: 700px; 
     padding: 35px 50px;
+    margin-bottom: 30px;
+    
+    text-align: center;
+
+    background-color: #fff;
     border-radius: 12px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.18);
-    width: 100%;
-    max-width: 700px; /* Ajuste a largura máxima para o formulário de cadastro */
-    text-align: center;
-    margin-bottom: 30px;
+
     transition: transform 0.3s ease-in-out;
 }
 
-.login__container:hover { /* Changed from .login-container */
+
+.login__container:hover { 
     transform: translateY(-5px);
 }
 
-.login__title { /* Changed from .login-title */
-    font-family: 'Playfair Display', serif;
-    color: var(--color-primary-burgundy);
-    font-size: 2.5em;
+/* Titulo da pagina (Acesse sua conta) */
+.login__title {
     margin-bottom: 35px;
+   
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5em;
+   
+    color: var(--color-primary-burgundy);
     letter-spacing: 0.5px;
 }
 
 /* --- Novos Estilos para Seções --- */
-
-/* Note: .section-title was not found in your HTML for login, so I've used .login__form-title for the H3 inside the form */
-.login__form-title { /* Changed from .section-title */
+.login__form-title { 
+    margin-top: 35px; 
+    margin-bottom: 20px; 
+    
+    text-align: left; 
+    
     font-family: 'Playfair Display', serif;
-    color: var(--color-secondary-gold); /* Cor dourada para os títulos das seções */
-    font-size: 1.6em; /* Tamanho do título da seção */
-    margin-top: 35px; /* Espaçamento antes do título da seção */
-    margin-bottom: 20px; /* Espaçamento depois do título da seção */
-    text-align: left; /* Alinhar à esquerda */
-    border-bottom: 1px solid var(--color-border-light); /* Linha divisória sutil */
-    padding-bottom: 10px; /* Espaçamento entre título e linha */
+    font-size: 1.6em; 
+    
+    color: var(--color-secondary-gold);
+    border-bottom: 1px solid var(--color-border-light);
+    padding-bottom: 10px; 
 }
 
-.login__form-section { /* Changed from .form-section */
-    padding: 20px; /* Espaçamento interno para a seção do formulário */
-    border: 1px solid #eee; /* Borda leve para destacar a seção */
+.login__form-section { 
+    padding: 20px; 
+    
+    background-color: #fcfcfc; 
+    border: 1px solid #eee; 
     border-radius: 8px;
-    margin-bottom: 30px; /* Espaçamento após cada seção */
-    background-color: #fcfcfc; /* Fundo levemente diferente para a seção */
+
+    margin-bottom: 30px; 
 }
 
 /* Garante que o último form-section não tenha margem inferior excessiva */
-.login__form .login__form-section:last-of-type { /* Changed from .login-form .form-section */
-    margin-bottom: 20px; /* Pode ser ajustado conforme necessário */
+
+.login__form .login__form-section:last-of-type { 
+    margin-bottom: 20px; 
 }
 
 /* --- Estilos de Formulário Existentes (Mantenha as melhorias anteriores) --- */
-
-.login__form .login__form-group { /* Changed from .login-form .form-group */
+.login__form .login__form-group { 
     margin-bottom: 22px;
     text-align: left;
 }
 
-.login__form label { /* Changed from .login-form label */
-    display: block;
+.login__form label { 
     margin-bottom: 10px;
     font-weight: 600;
-    color: var(--color-text-dark);
+    
+    display: block;
+    
     font-size: 0.95em;
+    color: var(--color-text-dark);
 }
 
-.login__form .login__form-control { /* Changed from .login-form .form-control */
+
+/* Formatação titulo da informação (Informações de login) */
+.login__form .login__form-control {
     width: 100%;
     padding: 13px 18px;
+   
+    font-size: 1.05em;
+   
     border: 1px solid var(--color-border-light);
     border-radius: 8px;
-    font-size: 1.05em;
     box-sizing: border-box;
+   
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.login__form .login__form-control:focus { /* Changed from .login-form .form-control */
+/* Aplica uma borda quando o usuario estiver escrevendo a informação */
+.login__form .login__form-control:focus { 
     outline: none;
     border-color: var(--color-primary-burgundy);
     box-shadow: 0 0 0 4px rgba(85, 13, 13, 0.25);
 }
 
-.login__button-enter { /* Changed from .login-button */
+
+/* Formatação botão de login do form */
+.login__button-enter { 
     background-color: var(--color-primary-burgundy);
     color: var(--color-text-light);
     padding: 14px 30px;
@@ -109,12 +130,14 @@
     letter-spacing: 0.5px;
 }
 
-.login__button-enter:hover { /* Changed from .login-button */
+.login__button-enter:hover { 
     background-color: #6a1a1a;
     transform: translateY(-3px);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
+
+/* Formatação link caso o usuario não tenha conta */
 .register-text {
     margin-top: 30px;
     font-size: 1em;
@@ -133,11 +156,8 @@
     text-decoration: underline;
 }
 
-.login__footer { /* Changed from .login-footer */
-    color: #777;
-    font-size: 0.85em;
-    margin-top: 30px;
-}
+
+
 
 /* Estilo para mensagens de alerta (usando classes Bootstrap) */
 .alert {
@@ -160,41 +180,41 @@
 
 /* Responsividade */
 @media (max-width: 768px) { /* Ajuste para tablets */
-    .login__container { /* Changed from .login-container */
+    .login__container { 
         max-width: 90%;
         padding: 30px 40px;
     }
-    .login__form-title { /* Changed from .section-title */
+    .login__form-title { 
         font-size: 1.4em;
         margin-top: 25px;
         margin-bottom: 15px;
     }
-    .login__form-section { /* Changed from .form-section */
+    .login__form-section { 
         padding: 15px;
         margin-bottom: 25px;
     }
 }
 
-@media (max-width: 576px) {
+@media (max-width: 576px) { /* Ajuste para celulares */
     .login-body {
         padding: 15px;
     }
-    .login__container { /* Changed from .login-container */
+    .login__container { 
         padding: 25px 30px;
         border-radius: 8px;
     }
-    .login__title { /* Changed from .login-title */
+    .login__title { 
         font-size: 2em;
         margin-bottom: 25px;
     }
-    .login__form label { /* Changed from .login-form label */
+    .login__form label { 
         font-size: 0.9em;
     }
-    .login__form .login__form-control { /* Changed from .login-form .form-control */
+    .login__form .login__form-control {
         padding: 10px 15px;
         font-size: 1em;
     }
-    .login__button-enter { /* Changed from .login-button */
+    .login__button-enter { 
         padding: 10px 20px;
         font-size: 1em;
         margin-top: 20px;
@@ -209,39 +229,35 @@
     }
 }
 
-/* Dentro de static/css/create_acount.css */
-
-/* ... (seus estilos existentes) ... */
 
 /* Estilos para o botão de voltar */
 .back-button {
-    background-color: #6c757d; /* Cor cinza padrão para um botão secundário */
+    background-color: #6c757d; 
     color: white;
     padding: 10px 20px;
     border-radius: 5px;
     text-decoration: none;
     font-size: 1em;
-    display: inline-flex; /* Para alinhar o ícone e o texto */
+    display: inline-flex; 
     align-items: center;
-    margin-bottom: 30px; /* Espaço entre o botão e o formulário */
+    margin-bottom: 30px; 
     transition: background-color 0.3s ease, transform 0.2s ease;
-    border: none; /* Remove a borda padrão do Bootstrap */
+    border: none;
     cursor: pointer;
 }
 
 .back-button i {
-    margin-right: 8px; /* Espaço entre o ícone e o texto */
+    margin-right: 8px; 
 }
 
 .back-button:hover {
-    background-color: #5a6268; /* Cor um pouco mais escura no hover */
+    background-color: #5a6268; 
     transform: translateY(-2px);
-    color: white; /* Garante que o texto continue branco no hover */
-    text-decoration: none; /* Garante que o sublinhado não apareça no hover */
+    color: white; 
+    text-decoration: none; 
 }
 
 
-/* ... (o restante dos seus estilos) ... */
 
 /* Ajustes para responsividade, se necessário para o botão */
 @media (max-width: 576px) {

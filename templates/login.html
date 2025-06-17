@@ -47,11 +47,13 @@
                 <form action="/login" method="post" class="login__form">
                     <h3 class="login__form-title">Informações de Login</h3> {# Nova seção para login #}
                     <div class="login__form-section"> {# Envolva os campos em um form-section #}
+                        
                         <div class="login__form-group">
                             <label for="username_or_email">Usuário ou E-mail:</label>
                             <input type="text" id="username_or_email" name="username_or_email"
                                 class="login__form-control" required>
                         </div>
+                        
                         <div class="login__form-group login__form-group--password">
                             <label for="password">Senha:</label>
                             <input type="password" id="password" name="password" class="login__form-control" required>
