@@ -1,4 +1,4 @@
-
+/* Container principal da pagina */
 .register {
     padding: 25px;
     min-height: 100vh;
@@ -13,7 +13,7 @@
     flex-direction: column;
     box-sizing: border-box;
 }
-
+/* Main da pagina */
 .register__main-container { 
     width: 100%;
     max-width: 700px; 
@@ -33,6 +33,7 @@
     transform: translateY(-5px);
 }
 
+/* Titulo do container (Crie sua conta) */
 .register__title { 
     margin-bottom: 35px;
      
@@ -45,7 +46,7 @@
 }
 
 
-
+/* Titulos dos dados (Dados pessoais, endereço etc) */
 .register__form-title { 
     padding-bottom: 10px;
     margin-top: 35px;
@@ -59,6 +60,7 @@
     
     border-bottom: 1px solid var(--color-border-light);
 }
+
 
 .register__form-section {
     padding: 20px;
@@ -75,12 +77,12 @@
     margin-bottom: 20px;
 }
 
-/* --- Estilos de Formulário Existentes (Mantenha as melhorias anteriores) --- */
 
 .register__form .register__form-group { 
     margin-bottom: 22px;
     text-align: left;
 }
+
 
 .register__form label { 
     margin-bottom: 10px;
@@ -93,6 +95,7 @@
     color: var(--color-text-dark);
 }
 
+/* Formata o input das informações */
 .register__form .register__form-control { 
     width: 100%;
     padding: 13px 18px;
@@ -106,6 +109,7 @@
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
+/* aplica uma borda no input quando for digitar */
 .register__form .register__form-control:focus {
     outline: none;
     
@@ -113,6 +117,7 @@
     box-shadow: 0 0 0 4px rgba(85, 13, 13, 0.25);
 }
 
+/* formatação botão de registro do form */
 .register__button { 
     width: 100%;
     padding: 14px 30px;
@@ -138,6 +143,7 @@
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
+/* Testo do link para caso o usuario ja tenha conta */
 .register__login-text { 
     margin-top: 30px;
     font-size: 1em;
@@ -156,11 +162,6 @@
     text-decoration: underline;
 }
 
-.register__footer { 
-    margin-top: 30px;
-    color: #777;
-    font-size: 0.85em;
-}
 
 /* Estilo para mensagens de alerta (usando classes Bootstrap) */
 .flash-messages-container .alert {
@@ -171,11 +172,14 @@
     font-size: 0.95em;
     line-height: 1.5;
 }
+
+/* mensagem de sucesso de cadastro */
 .flash-messages-container .alert-success {
     color: #155724;
     background-color: #d4edda;
     border-color: #c3e6cb;
 }
+/* mensagem caso tenha informação restante ou incorreta */
 .flash-messages-container .alert-danger {
     color: #721c24;
     background-color: #f8d7da;
