@@ -3,18 +3,18 @@ from mysql.connector import Error
 
 class Conection:
     # Credênciais do banco de dados local
-    # _HOST = 'localhost'
-    # _DATABASE = 'db_vinhas_de_ouro'
-    # _USER = 'root'  
-    # _PASSWORD = 'root'
-    # _PORT = 3306  
+    _HOST = 'localhost'
+    _DATABASE = 'db_vinhas_de_ouro'
+    _USER = 'root'  
+    _PASSWORD = 'root'
+    _PORT = 3306  
 
     # Credênciais do banco de dados online
-    _HOST = 'asvinhasdeouro-aluno-48a5.c.aivencloud.com'
-    _DATABASE = 'db_vinhas_de_ouro'
-    _USER = 'avnadmin'
-    _PASSWORD = 'AVNS_9WXfOWTT-CeO2uZltgg'
-    _PORT = 14307 
+    # _HOST = 'asvinhasdeouro-aluno-48a5.c.aivencloud.com'
+    # _DATABASE = 'db_vinhas_de_ouro'
+    # _USER = 'avnadmin'
+    # _PASSWORD = 'AVNS_9WXfOWTT-CeO2uZltgg'
+    # _PORT = 14307 
 
     @staticmethod
     def create_conection():
