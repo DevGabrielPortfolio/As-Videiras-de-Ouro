@@ -23,6 +23,8 @@
     {% block content %}
 
     <main class="wine-detail">
+        
+        <!-- Verifica se á erros, caso ouver manda uma mensagem para o usuario -->
         {% with messages = get_flashed_messages(with_categories=true) %}
             {% if messages %}
                 <div class="flash-messages-container mt-3">
@@ -36,8 +38,11 @@
             {% endif %}
         {% endwith %}
 
+        <!-- seção da pagina de informação dos vinhos -->
         <section class="wine-detail__store-info container mt-4">
+            
             <div class="row">
+                <!-- Carrossel das imagens do vinho -->
                 <div class="col-md-6">
                     <div id="carousel-vinho-detalhe-{{ vinho.id_produto }}" class="carousel slide wine-detail__carousel-container" data-bs-ride="carousel">
                         <div class="carousel-inner wine-detail__carousel-inner">
@@ -72,6 +77,7 @@
                     </div>
                 </div>
 
+                <!-- container das informações do vinho (nome, descrição etc) -->
                 <div class="col-md-6">
                     <div class="wine-detail__container">
                         <h1 class="display-4 mb-3">{{ vinho.nome }}</h1>
@@ -95,6 +101,7 @@
             </div>
         </section>
 
+        <!-- container de comentar -->
         {% if 'user_id' in session %}
             <div class="wine-detail__container-form">
                 <form action="/post/cadastrarmensagem" method="POST" class="wine-detail__form-formatting">
@@ -114,6 +121,7 @@
 
         <hr>
 
+        <!-- comentario de comentarios -->
         <div class="comments">
             <h3>Comentários</h3>
 

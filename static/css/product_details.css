@@ -1,43 +1,43 @@
 /* Estilos para o cabeçalho (vindo de index.css ou global) */
 
 /* Estilos para a seção principal de detalhes do vinho */
-.wine-detail { /* Alterado de .main */
+.wine-detail { 
     padding: 20px;
     background-color: var(--color-background-light);
 }
 
 
-.wine-detail__container { /* Alterado de .wine-detail-container */
+.wine-detail__container { 
     padding: 40px;
-    background-color: #fff; /* Fundo branco para o container do produto */
+    background-color: #fff; 
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     margin-top: 20px;
     margin-bottom: 30px;
 }
 
-.wine-detail__image { /* Alterado de .wine-detail-image */
+.wine-detail__image { 
     max-width: 100%;
     height: auto;
     border: 1px solid var(--color-border-light);
-    border-radius: 8px; /* Borda arredondada para a imagem */
+    border-radius: 8px; 
     box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
 
 /* Ajustes para classes Bootstrap comuns dentro do contexto de detalhes */
-.wine-detail__container .display-4 { /* Mais específico para o nome do vinho */
-    color: var(--color-primary-burgundy); /* Cor de destaque para o nome do vinho */
+.wine-detail__container .display-4 { 
+    color: var(--color-primary-burgundy); 
     font-family: 'Playfair Display', serif;
     font-weight: bold;
 }
 
-.wine-detail__container .lead { /* Para a descrição */
+.wine-detail__container .lead { 
     font-size: 1.25rem;
     color: var(--color-text-dark);
 }
 
-.wine-detail__container .text-success { /* Para o preço */
-    color: var(--color-secondary-gold) !important; /* Usando !important para sobrescrever Bootstrap se necessário */
+.wine-detail__container .text-success {
+    color: var(--color-secondary-gold) !important; 
     font-size: 2em;
     font-weight: bold;
 }
@@ -83,11 +83,11 @@
 
 /* Estilos para o Carrossel */
 .wine-detail__carousel-container {
-    max-width: 600px; /* Largura máxima para o carrossel */
-    margin: 30px auto; /* Centraliza e adiciona margem */
+    max-width: 600px; 
+    margin: 30px auto; 
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
-    overflow: hidden; /* Garante que o conteúdo não vaze */
+    overflow: hidden; 
 }
 
 .wine-detail__carousel-inner {
@@ -95,15 +95,15 @@
 }
 
 .wine-detail__carousel-image {
-    border-radius: 10px; /* Borda arredondada para as imagens do carrossel */
+    border-radius: 10px; 
     object-fit: cover;
-    height: 400px; /* Altura fixa para as imagens do carrossel */
+    height: 400px; 
 }
 
 .wine-detail__carousel-control--prev,
 .wine-detail__carousel-control--next {
-    width: 15%; /* Aumenta a área clicável dos controles */
-    background: rgba(0, 0, 0, 0.3); /* Fundo semi-transparente para os controles */
+    width: 15%; 
+    background: rgba(0, 0, 0, 0.3); 
     transition: background-color 0.3s ease;
 }
 
@@ -113,7 +113,7 @@
 }
 
 /* Estilos para o formulário de comentários */
-.wine-detail__container-form { /* Adicionado para o contêiner do formulário de comentários */
+.wine-detail__container-form { 
     background-color: #fff;
     padding: 30px;
     border-radius: 8px;
@@ -124,7 +124,7 @@
     margin-right: auto;
 }
 
-.wine-detail__form-formatting { /* Adicionado para o formulário */
+.wine-detail__form-formatting { 
     display: flex;
     flex-direction: column;
     gap: 15px;
@@ -146,8 +146,8 @@
     border: 1px solid var(--color-border-light);
     border-radius: 5px;
     font-size: 1em;
-    resize: vertical; /* Permite redimensionar verticalmente */
-    min-height: 100px; /* Altura mínima para a caixa de texto */
+    resize: vertical; 
+    min-height: 100px; 
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -167,7 +167,7 @@
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-    align-self: flex-start; /* Alinha o botão à esquerda */
+    align-self: flex-start; 
     margin-top: 15px;
 }
 
@@ -178,10 +178,10 @@
 }
 
 /* Estilo para a mensagem de alerta de login */
-.wine-detail__alert-link { /* Alterado de .alert a */
+.wine-detail__alert-link { 
     font-weight: bold;
     text-decoration: underline;
-    color: var(--color-primary-burgundy) !important; /* Para garantir a cor */
+    color: var(--color-primary-burgundy) !important; 
 }
 
 /* Estilos para os comentários */
@@ -204,9 +204,9 @@
     text-align: center;
 }
 
-.comments__item { /* Alterado de .comments article */
+.comments__item { 
     margin-bottom: 20px;
-    border-bottom: 1px solid #eee; /* Borda mais clara */
+    border-bottom: 1px solid #eee;
     padding-bottom: 15px;
 }
 
@@ -225,18 +225,10 @@
     color: var(--color-secondary-gold);
 }
 
-/* Rodapé */
-footer {
-    background-color: var(--color-primary-burgundy);
-    color: var(--color-text-light);
-    text-align: center;
-    padding: 20px;
-    margin-top: 50px; /* Espaço antes do rodapé */
-    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
-}
+
 
 /* Responsividade */
-@media (max-width: 768px) {
+@media (max-width: 768px) { /* Responsividade para Desktop */
     .header {
         flex-direction: column;
         gap: 10px;
@@ -275,7 +267,7 @@ footer {
     }
 }
 
-@media (max-width: 576px) {
+@media (max-width: 576px) { /* Responsividade para Celular */ 
     .wine-detail {
         padding: 15px;
     }
