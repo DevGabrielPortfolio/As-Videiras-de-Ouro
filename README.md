@@ -114,3 +114,7 @@ Com a mudança das imagens para a tabela tb_imagens, certifique-se de que as sua
 
 
 Esperamos que você aproveite a experiência com o Vinhas de Ouro! Se tiver alguma dúvida ou precisar de mais funcionalidades, sinta-se à vontade para expandir este projeto.
+
+Autores: David. FrontEnd;
+         Gabriel. BackEnd;
+         Victoria. Documentação.
