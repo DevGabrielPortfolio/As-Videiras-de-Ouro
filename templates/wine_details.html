@@ -120,7 +120,7 @@
             {% if comentarios %}
                 {% for comentario in comentarios %}
                     <article class="comments__item">
-                        <p><strong>{{ comentario.usuario }}</strong> comentou em {{ comentario.data_comentario.strftime('%d/%m/%Y %H:%M') }}:</p>
+                        <p><strong>{{ comentario.usuario }}</strong> comentou em {{ comentario.data_comentario.strftime('%d/%m/%Y %H:%M') }}</p>
                         <p>{{ comentario.comentario }}</p>
                     </article>
                 {% endfor %}

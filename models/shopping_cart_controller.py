@@ -86,6 +86,7 @@ class ControlShoppingCart:
                            JOIN tb_produtos p ON i.id_produto = p.id_produto
                            LEFT JOIN tb_imagens img ON p.id_produto = img.id_produto
                   WHERE i.id_usuario = %s
+                  group by p.id_produto
                   ORDER BY i.id_item_carrinho; \
                   """
             cursor.execute(sql, (id_usuario,))
