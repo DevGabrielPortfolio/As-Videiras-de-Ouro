@@ -1,155 +1,185 @@
-
+/* Container principal da pagina */
 .register {
-    background-color: var(--color-background-light);
+    padding: 25px;
+    min-height: 100vh;
+    margin: 0;
+
+
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
-    margin: 0;
-    padding: 25px;
+    
+    background-color: var(--color-background-light);
     flex-direction: column;
     box-sizing: border-box;
 }
-
-.register__main-container { /* Alterado de .login-container para .register__main-container */
-    background-color: #fff;
+/* Main da pagina */
+.register__main-container { 
+    width: 100%;
+    max-width: 700px; 
     padding: 35px 50px;
+    margin-bottom: 30px;
+   
+    text-align: center;
+   
+    background-color: #fff;
     border-radius: 12px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.18);
-    width: 100%;
-    max-width: 700px; /* Ajuste a largura máxima para o formulário de cadastro */
-    text-align: center;
-    margin-bottom: 30px;
+   
     transition: transform 0.3s ease-in-out;
 }
 
-.register__main-container:hover { /* Alterado de .login-container para .register__main-container */
+.register__main-container:hover { 
     transform: translateY(-5px);
 }
 
-.register__title { /* Alterado de .login-title para .register__title */
-    font-family: 'Playfair Display', serif;
-    color: var(--color-primary-burgundy);
-    font-size: 2.5em;
+/* Titulo do container (Crie sua conta) */
+.register__title { 
     margin-bottom: 35px;
+     
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5em;
+    
+    color: var(--color-primary-burgundy);
+    
     letter-spacing: 0.5px;
 }
 
-/* --- Estilos para as Seções do Formulário de Cadastro --- */
 
-.register__form-title { /* Alterado de .section-title para .register__form-title */
-    font-family: 'Playfair Display', serif;
-    color: var(--color-secondary-gold);
-    font-size: 1.6em;
+/* Titulos dos dados (Dados pessoais, endereço etc) */
+.register__form-title { 
+    padding-bottom: 10px;
     margin-top: 35px;
     margin-bottom: 20px;
+    
+    color: var(--color-secondary-gold);
+    
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6em;
     text-align: left;
+    
     border-bottom: 1px solid var(--color-border-light);
-    padding-bottom: 10px;
 }
 
-.register__form-section { /* Alterado de .form-section para .register__form-section */
+
+.register__form-section {
     padding: 20px;
+    margin-bottom: 30px;
+
+    background-color: #fcfcfc;
+
     border: 1px solid #eee;
     border-radius: 8px;
-    margin-bottom: 30px;
-    background-color: #fcfcfc;
 }
 
 /* Garante que o último register__form-section não tenha margem inferior excessiva */
-.register__form .register__form-section:last-of-type { /* Alterado de .login-form .form-section para .register__form .register__form-section */
+.register__form .register__form-section:last-of-type { 
     margin-bottom: 20px;
 }
 
-/* --- Estilos de Formulário Existentes (Mantenha as melhorias anteriores) --- */
 
-.register__form .register__form-group { /* Alterado de .login-form .form-group para .register__form .register__form-group */
+.register__form .register__form-group { 
     margin-bottom: 22px;
     text-align: left;
 }
 
-.register__form label { /* Alterado de .login-form label para .register__form label */
-    display: block;
+
+.register__form label { 
     margin-bottom: 10px;
+    
+    display: block;
+    
     font-weight: 600;
-    color: var(--color-text-dark);
     font-size: 0.95em;
+    
+    color: var(--color-text-dark);
 }
 
-.register__form .register__form-control { /* Alterado de .login-form .form-control para .register__form .register__form-control */
+/* Formata o input das informações */
+.register__form .register__form-control { 
     width: 100%;
     padding: 13px 18px;
+    
     border: 1px solid var(--color-border-light);
     border-radius: 8px;
-    font-size: 1.05em;
     box-sizing: border-box;
+    
+    font-size: 1.05em;
+    
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.register__form .register__form-control:focus { /* Alterado de .login-form .form-control para .register__form .register__form-control */
+/* aplica uma borda no input quando for digitar */
+.register__form .register__form-control:focus {
     outline: none;
+    
     border-color: var(--color-primary-burgundy);
     box-shadow: 0 0 0 4px rgba(85, 13, 13, 0.25);
 }
 
-.register__button { /* Alterado de .login-button para .register__button */
+/* formatação botão de registro do form */
+.register__button { 
+    width: 100%;
+    padding: 14px 30px;
+    margin-top: 25px;
+    
     background-color: var(--color-primary-burgundy);
     color: var(--color-text-light);
-    padding: 14px 30px;
     border: none;
     border-radius: 8px;
+    
     font-size: 1.2em;
     font-weight: bold;
+    
     cursor: pointer;
+    
     transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-    width: 100%;
-    margin-top: 25px;
     letter-spacing: 0.5px;
 }
 
-.register__button:hover { /* Alterado de .login-button para .register__button */
+.register__button:hover { 
     background-color: #6a1a1a;
     transform: translateY(-3px);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
-.register__login-text { /* Alterado de .register-text para .register__login-text */
+/* Testo do link para caso o usuario ja tenha conta */
+.register__login-text { 
     margin-top: 30px;
     font-size: 1em;
     color: #555;
 }
 
-.register__login-text a { /* Alterado de .register-text a para .register__login-text a */
+.register__login-text a { 
     color: var(--color-primary-burgundy);
     font-weight: bold;
     text-decoration: none;
     transition: color 0.3s ease, text-decoration 0.3s ease;
 }
 
-.register__login-text a:hover { /* Alterado de .register-text a para .register__login-text a */
+.register__login-text a:hover { 
     color: var(--color-secondary-gold);
     text-decoration: underline;
 }
 
-.register__footer { /* Alterado de .login-footer para .register__footer */
-    color: #777;
-    font-size: 0.85em;
-    margin-top: 30px;
-}
 
 /* Estilo para mensagens de alerta (usando classes Bootstrap) */
-.flash-messages-container .alert { /* Adicionado seletor para o contêiner de mensagens */
+.flash-messages-container .alert {
     padding: 16px;
     margin-bottom: 25px;
+
     border-radius: 6px;
     font-size: 0.95em;
     line-height: 1.5;
 }
+
+/* mensagem de sucesso de cadastro */
 .flash-messages-container .alert-success {
     color: #155724;
     background-color: #d4edda;
     border-color: #c3e6cb;
 }
+/* mensagem caso tenha informação restante ou incorreta */
 .flash-messages-container .alert-danger {
     color: #721c24;
     background-color: #f8d7da;
@@ -158,86 +188,90 @@
 
 /* Estilos para o botão de voltar */
 .back-button {
-    background-color: #6c757d; /* Cor cinza padrão para um botão secundário */
-    color: white;
     padding: 10px 20px;
+    margin-bottom: 30px; 
+    
+    display: inline-flex; 
+    align-items: center;
+
+    background-color: #6c757d; 
+    color: white;
     border-radius: 5px;
+    border: none;
+
     text-decoration: none;
     font-size: 1em;
-    display: inline-flex; /* Para alinhar o ícone e o texto */
-    align-items: center;
-    margin-bottom: 30px; /* Espaço entre o botão e o formulário */
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    border: none; /* Remove a borda padrão do Bootstrap */
+
     cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .back-button i {
-    margin-right: 8px; /* Espaço entre o ícone e o texto */
+    margin-right: 8px;
 }
 
 .back-button:hover {
-    background-color: #5a6268; /* Cor um pouco mais escura no hover */
+    background-color: #5a6268;
     transform: translateY(-2px);
-    color: white; /* Garante que o texto continue branco no hover */
-    text-decoration: none; /* Garante que o sublinhado não apareça no hover */
+    color: white; 
+    text-decoration: none; 
 }
 
 /* Responsividade */
 @media (max-width: 768px) { /* Ajuste para tablets */
-    .register__main-container { /* Alterado de .login-container para .register__main-container */
+    .register__main-container { 
         max-width: 90%;
         padding: 30px 40px;
     }
     .register__title {
         font-size: 2em;
     }
-    .register__form-title { /* Alterado de .section-title para .register__form-title */
+    .register__form-title { 
         font-size: 1.4em;
         margin-top: 25px;
         margin-bottom: 15px;
     }
-    .register__form-section { /* Alterado de .form-section para .register__form-section */
+    .register__form-section { 
         padding: 15px;
         margin-bottom: 25px;
     }
 }
 
-@media (max-width: 576px) {
-    .register { /* Alterado de .login-body para .register */
+@media (max-width: 576px) { /* Responsividade celular*/
+    .register {
         padding: 15px;
     }
-    .register__main-container { /* Alterado de .login-container para .register__main-container */
+    .register__main-container { 
         padding: 25px 30px;
         border-radius: 8px;
     }
-    .register__title { /* Alterado de .login-title para .register__title */
-        font-size: 2em;
+    .register__title { 
         margin-bottom: 25px;
+        font-size: 2em;
     }
-    .register__form label { /* Alterado de .login-form label para .register__form label */
+    .register__form label {
         font-size: 0.9em;
     }
-    .register__form .register__form-control { /* Alterado de .login-form .form-control para .register__form .register__form-control */
+    .register__form .register__form-control { 
         padding: 10px 15px;
         font-size: 1em;
     }
-    .register__button { /* Alterado de .login-button para .register__button */
+    .register__button { 
         padding: 10px 20px;
+        margin-top: 20px;
         font-size: 1em;
-        margin-top: 20px;
     }
-    .register__login-text { /* Alterado de .register-text para .register__login-text */
-        font-size: 0.9em;
+    .register__login-text {
         margin-top: 20px;
+        font-size: 0.9em;
     }
     .flash-messages-container .alert { /* Adicionado seletor para o contêiner de mensagens */
         padding: 12px;
         font-size: 0.85em;
     }
     .back-button {
+        margin-bottom: 20px;
         padding: 8px 15px;
         font-size: 0.9em;
-        margin-bottom: 20px;
     }
 }

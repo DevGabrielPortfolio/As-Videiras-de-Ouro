@@ -1,50 +1,56 @@
 
 
-/* Título da Página (para index.html) */
+
+/* Apresentação da loja */
 .store__title {
-    font-family: 'Playfair Display', serif;
-    text-align: center;
-    color: var(--color-primary-burgundy);
+    width: 100%;
     margin: 50px 0 40px;
+    display: inline-block; 
+    text-align: center;
+
+    color: var(--color-primary-burgundy);
+
+    font-family: 'Playfair Display', serif;
     font-size: 3em;
     text-transform: uppercase;
+
     letter-spacing: 3px;
     border-bottom: 2px solid var(--color-secondary-gold);
     padding-bottom: 15px;
-    display: inline-block; /* Para o border-bottom ajustar ao texto */
-    width: 100%;
 }
 
-/* Carousel Styles */
+/* carrossel containers */
 .store__carousel-container {
-    max-width: 900px; /* Adjust as needed */
-    margin: 40px auto; /* Centers the carousel horizontally with some top/bottom margin */
+    max-width: 900px; 
+    margin: 40px auto;
+
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
-    overflow: hidden; /* Ensures image corners are rounded with the container */
+    
+    overflow: hidden;
 }
 
 .store__carousel-inner {
-    border-radius: 10px; /* Applies to the inner part, complementing the container */
+    border-radius: 10px;
 }
 
 .store__carousel-image {
-    height: 450px; /* Fixed height for consistency */
-    object-fit: cover; /* Ensures images cover the area without distortion */
-    border-radius: 10px; /* Rounded corners for the images */
+    height: 450px; 
+    object-fit: cover; 
+    border-radius: 10px; 
 }
 
-/* Custom carousel controls for better visibility with your theme */
+/* Setas de proximo e anterior do carrossel */
 .store__carousel-control--prev,
 .store__carousel-control--next {
-    width: 5%; /* Make controls a bit wider */
-    background: rgba(0, 0, 0, 0.4); /* Slightly darker background for better contrast */
+    width: 5%;
+    background: rgba(0, 0, 0, 0.4); 
     transition: background-color 0.3s ease;
 }
 
 .store__carousel-control--prev:hover,
 .store__carousel-control--next:hover {
-    background: rgba(0, 0, 0, 0.6); /* Darker on hover */
+    background: rgba(0, 0, 0, 0.6); 
 }
 
 .carousel-control-prev-icon,
@@ -52,25 +58,31 @@
     filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(288deg) brightness(102%) contrast(102%); /* Makes icons white */
 }
 
-/* Grid de Produtos */
+
+/* container de Produtos */
 .store__grid {
-    display: grid;
-    /* Adapta-se para ter um card por linha em telas pequenas, e múltiplos em telas maiores */
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px;
     padding: 20px 0;
-    /* Centraliza a grade quando há poucos itens para preencher toda a largura */
+    
+    display: grid;
+    gap: 30px;
     justify-content: center;
+ 
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+
 }
 
+/* cartão dos produtos da loja */
 .product-card {
+    display: flex;
+    flex-direction: column;
+
     background-color: #fff;
+    
     border: 1px solid var(--color-border-light-index);
     border-radius: 10px;
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    
     overflow: hidden;
-    display: flex;
-    flex-direction: column;
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
@@ -80,100 +92,111 @@
 }
 
 .product-card__image {
+    display: block;
+
     width: 100%;
-    height: 250px; /* Altura fixa para as imagens */
+    height: 250px; 
+
     object-fit: cover;
     border-bottom: 1px solid var(--color-border-light-index);
-    display: block; /* Remove espaço extra abaixo da imagem */
 }
 
 .product-card__name {
+    margin: 18px 18px 10px;
+
+    text-align: center;
+    flex-grow: 1;
+    
     font-family: 'Playfair Display', serif;
     font-size: 1.6em;
+    
     color: var(--color-primary-burgundy);
-    margin: 18px 18px 10px;
-    flex-grow: 1;
-    text-align: center;
 }
 
+/* discrição cartão dos produtos */
 .product-card__description {
-    font-size: 0.9em;
-    color: #666;
     margin: 0 18px 12px;
-    line-height: 1.5;
+    
     text-align: center;
+
+    font-size: 0.9em;
+
+    color: #666;
+    line-height: 1.5;
 }
 
 .product-card__price {
-    font-family: 'Roboto', sans-serif;
-    font-size: 1.7em;
-    color: var(--color-success);
-    font-weight: 700;
     margin: 10px 18px 20px;
     text-align: center;
+
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.7em;
+    font-weight: 700;
+
+    color: var(--color-success);
 }
 
+/* botão cartão dos produtos */
 .product-card__details-button {
+    margin-top: auto; 
+    font-weight: 700;
+    padding: 14px 0;
+    
     display: block;
+    text-align: center;
+    letter-spacing: 1px;
+
     background-color: var(--color-secondary-gold);
     color: var(--color-text-light);
-    padding: 14px 0;
-    text-align: center;
+    
+    text-transform: uppercase;
+
     border-radius: 0 0 10px 10px;
     transition: background-color 0.3s ease, transform 0.2s ease;
-    margin-top: auto; /* Empurra o botão para baixo */
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
 }
 
 .product-card__details-button:hover {
-    background-color: #a37209; /* Um dourado um pouco mais escuro no hover */
+    background-color: #a37209;
     text-decoration: none;
     transform: scale(1.01);
 }
 
+/* mensagem de erro na loja */
 .store__error-message {
-    text-align: center;
-    color: #777;
-    font-style: italic;
-    grid-column: 1 / -1;
+    margin-top: 30px;
     padding: 30px;
-    background-color: #fff3cd; /* cor de alerta do Bootstrap */
+
+    font-style: italic;
+    font-size: 1.1em;
+    text-align: center;
+    
+    background-color: #fff3cd; 
     border: 1px solid #ffc107;
     border-radius: 8px;
-    margin-top: 30px;
-    font-size: 1.1em;
+    color: #777;
+
+    grid-column: 1 / -1;
 }
 
-/* Footer */
-footer {
-    background-color: var(--color-primary-burgundy);
-    color: var(--color-text-light);
-    text-align: center;
-    padding: 25px 0;
-    margin-top: 60px;
-    width: 100%;
-    box-shadow: 0 -3px 8px rgba(0, 0, 0, 0.3);
-}
 
-/* Media Queries para Responsividade */
-@media (max-width: 992px) {
+/* responsividade */
+@media (max-width: 992px) { /* Responsividade desktop */
     .header {
+        padding: 10px;
+
         flex-direction: column;
         align-items: stretch;
-        padding: 10px;
     }
     .header__main-left,
     .header__main-right,
     .header__center {
         margin-bottom: 10px;
         text-align: center;
-        justify-content: center; /* Centraliza itens flex */
+        justify-content: center; 
     }
     .header__main-category-select {
         width: 80%;
-        margin: 0 auto; /* Centraliza o select */
+        margin: 0 auto; 
     }
     .header__icon-link {
         margin: 0 15px;
@@ -186,13 +209,14 @@ footer {
         margin: 40px 0 30px;
     }
     .store__carousel-container {
-        max-width: 100%; /* Full width on smaller screens */
-        margin: 30px 0; /* Adjust margin */
-        border-radius: 0; /* No border-radius on full width */
-        box-shadow: none; /* No shadow on full width */
+        max-width: 100%; 
+        margin: 30px 0; 
+
+        border-radius: 0; 
+        box-shadow: none; 
     }
     .store__carousel-image {
-        height: 300px; /* Smaller height for responsiveness */
+        height: 300px; 
         border-radius: 0;
     }
     .store__grid {
@@ -204,12 +228,12 @@ footer {
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 768px) { /* responsividade tablet */
     .container {
         padding: 0 10px;
     }
     .store__grid {
-        grid-template-columns: 1fr; /* Uma coluna em telas menores */
+        grid-template-columns: 1fr; 
     }
     .store__title {
         font-size: 1.8em;
@@ -220,7 +244,7 @@ footer {
     }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 480px) { /* responsividade celular */
     .header__brand {
         font-size: 1.5em;
     }
